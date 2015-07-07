@@ -1,0 +1,9 @@
+name: 'tekartik_mdl_js'
+version: 0.3.0
+description: Material design lite base resources and wrappers
+author: Alexandre Roux <alex@tekartik.com>
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+dependencies:
+dev_dependencies:
+  test: any
