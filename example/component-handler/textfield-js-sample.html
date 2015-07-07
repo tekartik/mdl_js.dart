@@ -1,0 +1,43 @@
+<html>
+<head>
+    <!-- Material Design Lite -->
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<div id="container"/>
+<script>
+    var addTextfieldForm = function() {
+        var form = document.createElement("form");
+        form.setAttribute("action", "#");
+        var div = document.createElement("div");
+        div.className = "mdl-textfield mdl-js-textfield textfield-demo";
+        var input = document.createElement("input");
+        input.className = "mdl-textfield__input";
+        input.setAttribute("type", "text");
+        input.setAttribute("pattern", "[0-9]*");
+        input.setAttribute("id", "sample2");
+        var label = document.createElement("label");
+        label.className = "mdl-textfield__label";
+        label.setAttribute("for", "sample2");
+        label.innerText = "Number...";
+        var span = document.createElement("span");
+        span.className = "mdl-textfield__error";
+        span.innerText = "Input is not a number!";
+        div.appendChild(input);
+        div.appendChild(label);
+        div.appendChild(span);
+        form.appendChild(div);
+        componentHandler.upgradeElement(div, 'MaterialTextfield');
+        document.getElementById('container').appendChild(form);
+    };
+    addTextfieldForm();
+
+    window.onload = addTextfieldForm();
+    setTimeout(addTextfieldForm, 2000);
+    //}, 0);
+</script>
+</body>
+</html>

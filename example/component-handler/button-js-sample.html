@@ -1,0 +1,27 @@
+<html>
+<head>
+    <!-- Material Design Lite -->
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<div id="container"/>
+<script>
+    var addButton = function() {
+        var button = document.createElement('button');
+        var textNode = document.createTextNode('Click Me!');
+        button.appendChild(textNode);
+        button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
+        componentHandler.upgradeElement(button, 'MaterialButton');
+        document.getElementById('container').appendChild(button);
+    }
+    addButton();
+    window.onload = function() {
+        addButton();
+        setTimeout(addButton, 2000);
+    }
+</script>
+</body>
+</html>

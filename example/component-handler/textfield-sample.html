@@ -1,0 +1,46 @@
+<html>
+<head>
+    <link rel="stylesheet" href="packages/tekartik_mdl_js/css/material.min.css">
+</head>
+<body>
+<div id="container"></div>
+<script type="application/dart">
+    import 'dart:html';
+    import 'dart:async';
+    import 'package:tekartik_mdl_js/mdl_js.dart';
+
+    var addTextfieldForm = () {
+        var form = document.createElement("form");
+        form.setAttribute("action", "#");
+        var div = document.createElement("div");
+        div.className = "mdl-textfield mdl-js-textfield textfield-demo";
+        var input = document.createElement("input");
+        input.className = "mdl-textfield__input";
+        input.setAttribute("type", "text");
+        input.setAttribute("pattern", "[0-9]*");
+        input.setAttribute("id", "sample2");
+        var label = document.createElement("label");
+        label.className = "mdl-textfield__label";
+        label.setAttribute("for", "sample2");
+        label.text = "Number...";
+        var span = document.createElement("span");
+        span.className = "mdl-textfield__error";
+        span.text = "Input is not a number!";
+        div.append(input);
+        div.append(label);
+        div.append(span);
+        form.append(div);
+        componentHandler.upgradeElement(div, jsClass: materialTextfieldType);
+        document.getElementById('container').append(form);
+    };
+
+    main() {
+        addTextfieldForm();
+        new Timer(new Duration(milliseconds: 2000), addTextfieldForm);
+    }
+
+    //}, 0);
+</script>
+<script src="packages/tekartik_mdl_js/js/material.min.js"></script>
+</body>
+</html>
