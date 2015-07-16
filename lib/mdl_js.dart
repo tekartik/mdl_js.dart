@@ -3,8 +3,11 @@ library tekartik.mdl_js;
 import 'dart:html' as html;
 import 'dart:js' as js;
 
+import "mdl_classes.dart" as mdl;
+
 final String materialTextfieldType = 'MaterialTextfield';
 final String materialButtonType = 'MaterialButton';
+final String materialRippleType = 'MaterialRipple';
 
 class ComponentHandler {
   js.JsObject _jsComponentHandler = js.context['componentHandler'];
@@ -17,7 +20,29 @@ class ComponentHandler {
 
   /// Upgrade a specific element
   void upgradeElement(html.HtmlElement element, { String jsClass }) {
-    _jsComponentHandler.callMethod('upgradeElement', [element, jsClass]);
+    // Handle when no jsClass is specified
+    if (jsClass == null) {
+      List<String> jsClasses = [];
+      html.CssClassSet classes = element.classes;
+      if (classes.contains(mdl.button)) {
+        jsClasses.add(materialButtonType);
+      }
+      if (classes.contains(mdl.textfield)) {
+        jsClasses.add(materialTextfieldType);
+      }
+      if (classes.contains(mdl.jsRippleEffect)) {
+        jsClasses.add(materialRippleType);
+      }
+      if (jsClasses.isEmpty) {
+        throw "element type cannot be found";
+      } else {
+        for (jsClass in jsClasses) {
+          _jsComponentHandler.callMethod('upgradeElement', [element, jsClass]);
+        }
+      }
+    } else {
+      _jsComponentHandler.callMethod('upgradeElement', [element, jsClass]);
+    }
   }
 }
 

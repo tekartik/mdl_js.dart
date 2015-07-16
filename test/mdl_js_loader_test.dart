@@ -4,7 +4,6 @@ library tekartik.mdl_js.loader_test;
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:test/test.dart';
-import 'dart:html';
 import 'dart:js' as js;
 
 void main() {
