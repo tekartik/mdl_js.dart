@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>spinner</title>
+    <link rel="stylesheet" href="packages/tekartik_mdl_js/css/material.min.css">
+</head>
+<body>
+<div id="progress" class="mdl-progress mdl-js-progress progress-demo"></div>
+<script src="packages/tekartik_mdl_js/js/material.min.js"></script>
+<script>
+    var element;
+    element = document.querySelector('#progress');
+    console.log(element.className);
+    console.log(element.dataset.upgraded);
+    element.addEventListener('mdl-componentupgraded', function(e) {
+        //console.log(e);
+        //console.log(this);
+        console.log(element.className);
+        console.log(element.dataset.upgraded);
+        this.MaterialProgress.setProgress(44);
+        //this.MaterialSpinner.setProgress(44);
+    });
+</script>
+</body>
+</html>

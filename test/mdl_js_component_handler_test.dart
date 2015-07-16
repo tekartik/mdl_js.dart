@@ -51,7 +51,6 @@ void main() {
       });
 
       test('autoUpgrade', () async {
-        // https://github.com/google/material-design-lite/issues/804
         var button = document.createElement('button');
         Future upgraded = button.on['mdl-componentupgraded'].skip(1).first;
         button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
@@ -66,13 +65,58 @@ void main() {
 
     group('textfield', () {
       test('autoUpgrade', () async {
-        // https://github.com/google/material-design-lite/issues/804
         var div = document.createElement('div');
         Future upgraded = div.on['mdl-componentupgraded'].first;
         div.className = 'mdl-textfield';
         expect(div.attributes['data-upgraded'], isNull);
         componentHandler.upgradeElement(div);
         expect(div.attributes['data-upgraded'], contains('MaterialTextfield'));
+        // Wait for upgrade event
+        await upgraded;
+      });
+    });
+
+    group('progress', () {
+      test('upgrade', () async {
+        var div = document.createElement('div');
+        Future upgraded = div.on['mdl-componentupgraded'].first;
+        div.className = 'mdl-progress mdl-js-progress';
+        expect(div.attributes['data-upgraded'], isNull);
+        componentHandler.upgradeElement(div, jsClass: materialProgressType);
+        expect(div.attributes['data-upgraded'], contains('MaterialProgress'));
+        // Wait for upgrade event
+        await upgraded;
+      });
+      test('autoUpgrade', () async {
+        var div = document.createElement('div');
+        Future upgraded = div.on['mdl-componentupgraded'].first;
+        div.className = 'mdl-progress mdl-js-progress';
+        expect(div.attributes['data-upgraded'], isNull);
+        componentHandler.upgradeElement(div);
+        expect(div.attributes['data-upgraded'], contains('MaterialProgress'));
+        // Wait for upgrade event
+        await upgraded;
+      });
+    });
+
+    group('spinner', () {
+      test('upgrade', () async {
+        var div = document.createElement('div');
+        Future upgraded = div.on['mdl-componentupgraded'].first;
+        div.className = 'mdl-spinner mdl-js-spinner';
+        expect(div.attributes['data-upgraded'], isNull);
+        componentHandler.upgradeElement(div, jsClass: materialSpinnerType);
+        expect(div.attributes['data-upgraded'], contains('MaterialSpinner'));
+        // Wait for upgrade event
+        await upgraded;
+      });
+      test('autoUpgrade', () async {
+        var div = document.createElement('div');
+        Future upgraded = div.on['mdl-componentupgraded'].first;
+        div.className = 'mdl-spinner mdl-js-spinner';
+        expect(div.attributes['data-upgraded'], isNull);
+        componentHandler.upgradeElement(div);
+        expect(div.attributes['data-upgraded'], contains('MaterialSpinner'));
         // Wait for upgrade event
         await upgraded;
       });

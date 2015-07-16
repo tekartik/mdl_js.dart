@@ -8,6 +8,8 @@ import "mdl_classes.dart" as mdl;
 final String materialTextfieldType = 'MaterialTextfield';
 final String materialButtonType = 'MaterialButton';
 final String materialRippleType = 'MaterialRipple';
+final String materialProgressType = 'MaterialProgress';
+final String materialSpinnerType = 'MaterialSpinner';
 
 class ComponentHandler {
   js.JsObject _jsComponentHandler = js.context['componentHandler'];
@@ -29,6 +31,12 @@ class ComponentHandler {
       }
       if (classes.contains(mdl.textfield)) {
         jsClasses.add(materialTextfieldType);
+      }
+      if (classes.contains(mdl.progress)) {
+        jsClasses.add(materialProgressType);
+      }
+      if (classes.contains(mdl.spinner)) {
+        jsClasses.add(materialSpinnerType);
       }
       if (classes.contains(mdl.jsRippleEffect)) {
         jsClasses.add(materialRippleType);

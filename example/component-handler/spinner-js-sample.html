@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>spinner</title>
+    <link rel="stylesheet" href="packages/tekartik_mdl_js/css/material.min.css">
+</head>
+<body>
+<div id="spinner" class="mdl-spinner mdl-js-spinner is-active"></div>
+<p id="spinnerSingleColor" class="mdl-spinner mdl-js-spinner mdl-spinner--single-color is-active"></p>
+<script src="packages/tekartik_mdl_js/js/material.min.js"></script>
+<script>
+    var element;
+    element = document.querySelector('#spinner');
+    console.log(element.className);
+    console.log(element.dataset.upgraded);
+    element.addEventListener('mdl-componentupgraded', function(e) {
+        //console.log(e);
+        //console.log(this);
+        console.log(element.className);
+        console.log(element.dataset.upgraded);
+        //this.MaterialSpinner.setProgress(44);
+    });
+</script>
+</body>
+</html>
