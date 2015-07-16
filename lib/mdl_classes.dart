@@ -9,5 +9,7 @@ final String button = prefixed("button");
 final String textfield = prefixed("textfield");
 final String progress = prefixed("progress");
 final String spinner = prefixed("spinner");
+final String slider = prefixed("slider");
+final String jsSlider = jsPrefixed("slider");
 
 final String jsRippleEffect = jsPrefixed("ripple-effect");

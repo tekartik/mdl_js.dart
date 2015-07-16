@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>spinner</title>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.css">
+</head>
+<body>
+<div id="container">
+    <p>Javascript sliders</p>
+</div>
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+<script>
+    var addSliderUpgradeAfterInsert = function() {
+        var input = document.createElement('input');
+        input.className = 'mdl-slider mdl-js-slider';
+        input.type = "range";
+        input.min = 0;
+        input.max = 100;
+        input.value = "25";
+        document.getElementById('container').appendChild(input);
+        console.log(componentHandler.upgradeElement(input, 'MaterialSlider'));
+
+    }
+    var addSliderUpgradeBeforeInsert = function() {
+        var input = document.createElement('input');
+        input.className = 'mdl-slider mdl-js-slider';
+        input.type = "range";
+        input.min = 0;
+        input.max = 100;
+        input.value = "25";
+        componentHandler.upgradeElement(input, 'MaterialSlider');
+        document.getElementById('container').appendChild(input);
+
+    }
+    window.onload = function() {
+        addSliderUpgradeAfterInsert();
+        addSliderUpgradeBeforeInsert();
+    }
+</script>
+</body>
+</html>

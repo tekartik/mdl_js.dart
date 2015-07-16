@@ -10,6 +10,7 @@ final String materialButtonType = 'MaterialButton';
 final String materialRippleType = 'MaterialRipple';
 final String materialProgressType = 'MaterialProgress';
 final String materialSpinnerType = 'MaterialSpinner';
+final String materialSliderType = 'MaterialSlider';
 
 class ComponentHandler {
   js.JsObject _jsComponentHandler = js.context['componentHandler'];
@@ -38,6 +39,9 @@ class ComponentHandler {
       if (classes.contains(mdl.spinner)) {
         jsClasses.add(materialSpinnerType);
       }
+      if (classes.contains(mdl.slider)) {
+        jsClasses.add(materialSliderType);
+      }
       if (classes.contains(mdl.jsRippleEffect)) {
         jsClasses.add(materialRippleType);
       }
@@ -45,7 +49,7 @@ class ComponentHandler {
         throw "element type cannot be found";
       } else {
         for (jsClass in jsClasses) {
-          _jsComponentHandler.callMethod('upgradeElement', [element, jsClass]);
+          upgradeElement(element, jsClass: jsClass);
         }
       }
     } else {

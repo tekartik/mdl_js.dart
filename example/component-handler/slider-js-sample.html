@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>spinner</title>
+    <link rel="stylesheet" href="packages/tekartik_mdl_js/css/material.min.css">
+</head>
+<body>
+<!-- Default Slider -->
+<p>Html sliders</p>
+<input class="mdl-slider mdl-js-slider" type="range"
+       min="0" max="100" value="0" tabindex="0"/>
+<!-- Slider with Starting Value -->
+<input class="mdl-slider mdl-js-slider" type="range"
+       min="0" max="100" value="25" tabindex="0"/>
+<div id="container">
+    <p>Javascript sliders</p>
+</div>
+<script src="packages/tekartik_mdl_js/js/material.min.js"></script>
+<script>
+    var addSlider = function() {
+        var input = document.createElement('input');
+        input.className = 'mdl-slider mdl-js-slider';
+        input.type = "range";
+        input.min = 0;
+        input.max = 100;
+        input.value = "25";
+
+        var sliderContainer = document.createElement('div');
+        sliderContainer.className = "mdl-slider__container";
+        sliderContainer.appendChild(input);
+        componentHandler.upgradeElement(input, 'MaterialSlider');
+
+        document.getElementById('container').appendChild(sliderContainer);
+    }
+    addSlider();
+    window.onload = function() {
+        addSlider();
+        setTimeout(addSlider, 2000);
+    }
+</script>
+</body>
+</html>

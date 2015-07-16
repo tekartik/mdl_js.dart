@@ -111,12 +111,42 @@ void main() {
         await upgraded;
       });
       test('autoUpgrade', () async {
-        var div = document.createElement('div');
-        Future upgraded = div.on['mdl-componentupgraded'].first;
-        div.className = 'mdl-spinner mdl-js-spinner';
-        expect(div.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(div);
-        expect(div.attributes['data-upgraded'], contains('MaterialSpinner'));
+        var input = document.createElement('div');
+        Future upgraded = input.on['mdl-componentupgraded'].first;
+        input.className = 'mdl-spinner mdl-js-spinner';
+        expect(input.attributes['data-upgraded'], isNull);
+        componentHandler.upgradeElement(input);
+        expect(input.attributes['data-upgraded'], contains('MaterialSpinner'));
+        // Wait for upgrade event
+        await upgraded;
+      });
+    });
+
+    group('slider', () {
+      test('upgrade', () async {
+        DivElement inputWrapper = document.createElement('div');
+        InputElement input = document.createElement('input');
+        Future upgraded = input.on['mdl-componentupgraded'].first;
+        input.className = 'mdl-slider mdl-js-slider';
+        input.type = "range";
+        inputWrapper.append(input);
+        expect(input.attributes['data-upgraded'], isNull);
+        componentHandler.upgradeElement(input, jsClass: materialSliderType);
+        expect(input.attributes['data-upgraded'], contains('MaterialSlider'));
+        // Wait for upgrade event
+        await upgraded;
+      });
+      test('autoUpgrade', () async {
+        DivElement inputWrapper = document.createElement('div');
+        InputElement input = document.createElement('input');
+        Future upgraded = input.on['mdl-componentupgraded'].first;
+        input.className = 'mdl-slider mdl-js-slider';
+        input.type = "range";
+        inputWrapper.append(input);
+        expect(input.attributes['data-upgraded'], isNull);
+        componentHandler.upgradeElement(input);
+        expect(input.attributes['data-upgraded'], contains('MaterialSlider'));
+        //print(inputWrapper.outerHtml);
         // Wait for upgrade event
         await upgraded;
       });
