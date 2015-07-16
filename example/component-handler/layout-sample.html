@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>spinner</title>
+</head>
+<body>
+<!-- Default Slider -->
+<!-- No header, and the drawer stays open on larger screens (fixed drawer). -->
+<!--
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--overlay-drawer-button">
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content"></div>
+    </main>
+</div>
+-->
+<script type="application/dart">
+    import 'package:tekartik_mdl_js/mdl_js_loader.dart';
+    import 'package:tekartik_mdl_js/mdl_layout.dart';
+    import 'dart:async';
+    import 'dart:html';
+
+    main() async {
+        await Future.wait([loadMdlCss(), loadMdlJs()]);
+        DivElement layout = layoutCreate(fixedDrawer: true);
+        DivElement layoutDrawer = layoutDrawerCreate();
+        SpanElement layoutTitle = layoutTitleCreate(title: 'Dynamic page');
+        document.body.append(layout..append(layoutDrawer..append(layoutTitle)));
+        layoutUpgrade(layout);
+
+
+    }
+
+</script>
+</body>
+</html>

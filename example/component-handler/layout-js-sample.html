@@ -1,0 +1,66 @@
+<html>
+<head>
+    <title>spinner</title>
+    <link rel="stylesheet" href="packages/tekartik_mdl_js/css/material.min.css">
+</head>
+<body>
+<!-- Default Slider -->
+<!-- No header, and the drawer stays open on larger screens (fixed drawer). -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--overlay-drawer-button">
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content"><!-- Your content goes here --></div>
+    </main>
+</div>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--overlay-drawer-button">
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content"><!-- Your content goes here --></div>
+    </main>
+</div>
+<div id="container">
+    <p>Javascript sliders</p>
+</div>
+<script src="packages/tekartik_mdl_js/js/material.min.js"></script>
+<script>
+    var addSlider = function() {
+        var input = document.createElement('input');
+        input.className = 'mdl-slider mdl-js-slider';
+        input.type = "range";
+        input.min = 0;
+        input.max = 100;
+        input.value = "25";
+
+        var sliderContainer = document.createElement('div');
+        sliderContainer.className = "mdl-slider__container";
+        sliderContainer.appendChild(input);
+        componentHandler.upgradeElement(input, 'MaterialSlider');
+
+        document.getElementById('container').appendChild(sliderContainer);
+    }
+    addSlider();
+    window.onload = function() {
+        addSlider();
+        setTimeout(addSlider, 2000);
+    }
+</script>
+</body>
+</html>

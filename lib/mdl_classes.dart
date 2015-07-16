@@ -13,3 +13,12 @@ final String slider = prefixed("slider");
 final String jsSlider = jsPrefixed("slider");
 
 final String jsRippleEffect = jsPrefixed("ripple-effect");
+
+final String layout = prefixed("layout");
+final String jsLayout = jsPrefixed("layout");
+final String layoutOverlayDrawerButton = "$layout--overlay-drawer-button";
+final String layoutFixedDrawer = "$layout--fixed-drawer";
+final String layoutDrawer = "${layout}__drawer";
+final String layoutTitle = "$layout-title";
+
+final String isUpgraded = "is-upgraded";

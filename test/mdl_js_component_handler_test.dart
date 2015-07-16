@@ -3,6 +3,7 @@ library tekartik.mdl_js.compoenent_handler_test;
 
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_js.dart';
+import 'package:tekartik_mdl_js/mdl_component.dart';
 import 'package:test/test.dart';
 import 'dart:html';
 import 'dart:async';
@@ -13,16 +14,21 @@ void main() {
     setUp(() async {
       await(loadMdlJs());
     });
+
     group('button', () {
       test('button', () async {
         var button = document.createElement('button');
         button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
-        Future upgraded = button.on['mdl-componentupgraded'].first;
+        //Future upgraded = button.on['mdl-componentupgraded'].first;
+        // Future upgraded = onComponentUpgraded(button).first; //
+        Future upgraded = whenComponentUpgraded(button);
         expect(button.attributes['data-upgraded'], isNull);
         componentHandler.upgradeElement(button, jsClass: materialButtonType);
         expect(button.attributes['data-upgraded'], isNotNull);
+        //print(button.outerHtml);
         // Wait for upgrade event
         await upgraded;
+        //print(button.outerHtml);
       });
 
       test('button-simple', () async {
@@ -63,6 +69,28 @@ void main() {
       });
     });
 
+    group('upgrade', () {
+      test('twice', () async {
+        var button = document.createElement('button');
+        button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
+        Future upgraded = whenComponentUpgraded(button, 2);
+        expect(componentHandler.upgradeElement(button, jsClass: materialButtonType), 1);
+        expect(componentHandler.upgradeElement(button, jsClass: materialButtonType), 0);
+        expect(componentHandler.upgradeElement(button, jsClass: materialRippleType), 1);
+        expect(componentHandler.upgradeElement(button, jsClass: materialRippleType), 0);
+        await upgraded;
+        //await onComponentUpgraded(button).first;
+      });
+
+      /*
+      skip_test('future', () async {
+        var button = document.createElement('button');
+        button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
+        await componentHandler.upgrade(button);
+      });
+      */
+
+    });
     group('textfield', () {
       test('autoUpgrade', () async {
         var div = document.createElement('div');
