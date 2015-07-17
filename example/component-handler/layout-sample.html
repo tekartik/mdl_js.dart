@@ -1,6 +1,10 @@
 <html>
 <head>
     <title>spinner</title>
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en'
+          rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 <!-- Default Slider -->
@@ -25,16 +29,49 @@
 <script type="application/dart">
     import 'package:tekartik_mdl_js/mdl_js_loader.dart';
     import 'package:tekartik_mdl_js/mdl_layout.dart';
+    import 'package:tekartik_mdl_js/mdl_button.dart';
+    import 'package:tekartik_mdl_js/mdl_grid.dart';
     import 'dart:async';
     import 'dart:html';
 
     main() async {
         await Future.wait([loadMdlCss(), loadMdlJs()]);
-        DivElement layout = layoutCreate(fixedDrawer: true);
+        DivElement layout = layoutCreate(overlayDrawerButton: true, fixedHeader: true);
         DivElement layoutDrawer = layoutDrawerCreate();
-        SpanElement layoutTitle = layoutTitleCreate(title: 'Dynamic page');
-        document.body.append(layout..append(layoutDrawer..append(layoutTitle)));
+        Element layoutHeader = layoutHeaderCreate();
+        Element layoutContent = layoutContentCreate();
+        SpanElement layoutDrawerTitle = layoutTitleCreate(title: 'Dynamic page');
+        ButtonElement toggleButton = buttonCreate()
+            ..appendText('Toggle');
+        document.body.append(layout
+            ..append(
+                layoutHeader
+                    ..append(layoutHeaderRowCreate()
+                    ..append(layoutTitleCreate(title: 'Title'))
+                    ..append(layoutSpacerCreate()))
+        )
+            ..append(
+                layoutDrawer
+                    ..append(layoutDrawerTitle)
+                    ..append(navigationCreate()
+                    ..append(navigationLinkCreate()
+                    ..appendText("Link1")
+                    ..href = "#")
+                    ..append(navigationLinkCreate()
+                    ..appendText("Close")..onClick.listen((_) {
+                    layoutDrawerHide(layoutDrawer);
+                }))))
+            ..append(
+                layoutContent
+                    ..append(gridCreate()..append(cellCreate(8, tablet: 4, phone: 2))
+                    ..append(cellCreate(4, tablet: 4, phone: 2)..append(toggleButton)))
+        ));
         layoutUpgrade(layout);
+        buttonUpgrade(toggleButton);
+        toggleButton.on['click'].listen((_) {
+           print('hi');
+            layoutDrawerToggle(layoutDrawer);
+        });
 
 
     }
