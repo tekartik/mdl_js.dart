@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+<div id="container"/>
+<script type="application/dart">
+    import 'package:tekartik_mdl_js/mdl_button.dart';
+    import 'package:tekartik_mdl_js/mdl_js_loader.dart';
+    import 'dart:async';
+    import 'dart:html';
+
+    main() async {
+        await Future.wait([loadMdlCss(), loadMdlJs()]);
+
+        ButtonElement element = buttonCreate(raised: true)
+            ..appendText("Simple button");
+        querySelector('#container').append(element);
+        AnchorElement anchorElement = (buttonCreate(raised: true, tag: 'a') as AnchorElement)
+            ..appendText("Simple anchor")
+            ..href = 'http://www.google.com';
+
+        querySelector('#container').append(anchorElement);
+
+    }
+</script>
+</body>
+</html>

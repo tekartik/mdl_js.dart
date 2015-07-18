@@ -7,6 +7,8 @@ String jsPrefixed(String klass) => "$jsPrefix-$klass";
 
 final String button = prefixed("button");
 final String jsButton = jsPrefixed("button");
+
+final String buttonRaised = "${button}--raised";
 final String textfield = prefixed("textfield");
 final String progress = prefixed("progress");
 final String spinner = prefixed("spinner");
