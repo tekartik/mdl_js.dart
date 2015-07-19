@@ -15,13 +15,16 @@ void main() {
       await(loadMdlJs());
     });
 
+    //_skip_test(_1, _2) {}
+
     group('button', () {
-      test('button', () async {
+     test('button', () async {
         var button = document.createElement('button');
         button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
         //Future upgraded = button.on['mdl-componentupgraded'].first;
-        // Future upgraded = onComponentUpgraded(button).first; //
+        //Future upgraded = onComponentUpgraded(button).first; //
         Future upgraded = whenComponentUpgraded(button);
+
         expect(button.attributes['data-upgraded'], isNull);
         componentHandler.upgradeElement(button, jsClass: materialButtonType);
         expect(button.attributes['data-upgraded'], isNotNull);
@@ -82,13 +85,38 @@ void main() {
         //await onComponentUpgraded(button).first;
       });
 
-      /*
-      skip_test('future', () async {
+
+      test('is_upgraded', () async {
+        var button = document.createElement('button');
+        button.className = 'mdl-button';
+        expect(isComponentUpgraded(button), false);
+        componentHandler.upgradeElement(button);
+        expect(isComponentUpgraded(button), true);
+      });
+
+      test('if_or_when_upgraded_before', () async {
+        var button = document.createElement('button');
+        button.className = 'mdl-button';
+        Future upgraded = whenComponentUpgraded(button);
+        componentHandler.upgradeElement(button);
+        await upgraded;
+      });
+
+      test('if_or_when_upgraded_before', () async {
+        var button = document.createElement('button');
+        button.className = 'mdl-button';
+        componentHandler.upgradeElement(button);
+        Future upgraded = whenComponentUpgraded(button);
+        await upgraded;
+      });
+
+
+      test('future', () async {
         var button = document.createElement('button');
         button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
         await componentHandler.upgrade(button);
       });
-      */
+
 
     });
     group('textfield', () {

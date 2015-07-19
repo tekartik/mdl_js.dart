@@ -9,6 +9,8 @@ final String button = prefixed("button");
 final String jsButton = jsPrefixed("button");
 
 final String buttonRaised = "${button}--raised";
+final String buttonColored = "${button}--colored";
+
 final String textfield = prefixed("textfield");
 final String progress = prefixed("progress");
 final String spinner = prefixed("spinner");
@@ -43,3 +45,4 @@ final String navigationLink = "${navigation}__link";
 
 final String isUpgraded = "is-upgraded";
 final String isVisible = "is-visible";
+final String isActive = "is-active";

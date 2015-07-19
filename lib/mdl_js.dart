@@ -4,6 +4,7 @@ import 'dart:html' as html;
 import 'dart:js' as js;
 import "mdl_classes.dart" as mdl;
 import "mdl_component.dart" as mdl;
+import 'dart:async';
 
 final String materialTextfieldType = 'MaterialTextfield';
 final String materialButtonType = 'MaterialButton';
@@ -22,24 +23,41 @@ class ComponentHandler {
     }
   }
 
-  /*
-  Future upgrade(html.HtmlElement element) async {
-    Stream stream = mdl.onComponentUpgraded(element);
-    print(element.classes);
-    print(element.dataset['upgraded']);
-    //stream.listen((e) => print('upgraded'));
-    int eventCount = upgradeElement(element);
-    print(eventCount);
-    if (eventCount > 1) {
-      //stream.skip(eventCount - 1);
-    } else if (eventCount == 0) {
-      return;
-    }
-    print(element.dataset['upgraded']);
-    await stream.first;
-    //return new Future.value();
+  /* NOT WORKING */
+  Future _upgrade(html.HtmlElement element) {
+    upgradeElement(element);
+    return mdl.whenComponentUpgraded(element);
   }
-  */
+  Future upgrade(html.HtmlElement element) {
+    //stream.listen((e) => print('upgraded'));
+    Completer completer = new Completer.sync();
+    int eventGotCount = 0;
+    int eventCount = null;
+    Stream stream = mdl.onComponentUpgraded(element);
+    stream.listen((e) {
+      // Not returned from upgradeElement yet
+      if (eventCount == null) {
+        eventGotCount++;
+        // go on
+      } else {
+        eventCount--;
+        if (eventCount <= 0) {
+          completer.complete();
+        }
+
+      }
+    });
+    eventCount = upgradeElement(element);
+    eventCount -= eventGotCount;
+
+    if (eventCount == 0) {
+      if (!mdl.isComponentUpgraded(element)) {
+        throw 'element not upgrade ${element} ${new Map.from(element.attributes)}';
+      }
+      completer.complete();
+    }
+    return completer.future;
+  }
 
   /// Upgrade a specific element
   /// return the number of upgrades performed
@@ -92,6 +110,7 @@ class ComponentHandler {
 }
 
 ComponentHandler _componentHandler;
+
 ComponentHandler get componentHandler {
   if (_componentHandler == null) {
     _componentHandler = new ComponentHandler();
