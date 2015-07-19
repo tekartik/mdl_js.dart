@@ -119,6 +119,10 @@ void main() {
 
 
     });
+
+    group('findElement', () {
+
+    });
     group('textfield', () {
       test('autoUpgrade', () async {
         var div = document.createElement('div');

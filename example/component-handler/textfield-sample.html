@@ -8,6 +8,7 @@
     import 'dart:html';
     import 'dart:async';
     import 'package:tekartik_mdl_js/mdl_js.dart';
+    import 'package:tekartik_mdl_js/mdl_textfield.dart';
 
     var addTextfieldForm = () {
         var form = document.createElement("form");
@@ -32,6 +33,7 @@
         form.append(div);
         componentHandler.upgradeElement(div, jsClass: materialTextfieldType);
         document.getElementById('container').append(form);
+        textfieldChange(div, "1324");
     };
 
     main() {

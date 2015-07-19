@@ -59,9 +59,10 @@ class ComponentHandler {
     return completer.future;
   }
 
+
   /// Upgrade a specific element
   /// return the number of upgrades performed
-  int upgradeElement(html.HtmlElement element, { String jsClass }) {
+  int upgradeElement(html.Element element, { String jsClass }) {
     // Handle when no jsClass is specified
     if (jsClass == null) {
       List<String> jsClasses = [];
