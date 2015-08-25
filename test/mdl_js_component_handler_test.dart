@@ -18,30 +18,7 @@ void main() {
     //_skip_test(_1, _2) {}
 
     group('button', () {
-     test('button', () async {
-        var button = document.createElement('button');
-        button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
-        //Future upgraded = button.on['mdl-componentupgraded'].first;
-        //Future upgraded = onComponentUpgraded(button).first; //
-        Future upgraded = whenComponentUpgraded(button);
 
-        expect(button.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(button, jsClass: materialButtonType);
-        expect(button.attributes['data-upgraded'], isNotNull);
-        //print(button.outerHtml);
-        // Wait for upgrade event
-        await upgraded;
-        //print(button.outerHtml);
-      });
-
-      test('button-simple', () async {
-        var button = document.createElement('button');
-        button.className = 'mdl-button';
-        expect(button.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(button, jsClass: materialButtonType);
-        //print(button.attributes['data-upgraded']);
-        expect(button.attributes['data-upgraded'], contains('MaterialButton'));
-      });
 
       test('bug_804', () async {
         // https://github.com/google/material-design-lite/issues/804
@@ -76,24 +53,21 @@ void main() {
       test('twice', () async {
         var button = document.createElement('button');
         button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
-        Future upgraded = whenComponentUpgraded(button, 2);
-        expect(componentHandler.upgradeElement(button, jsClass: materialButtonType), 1);
-        expect(componentHandler.upgradeElement(button, jsClass: materialButtonType), 0);
-        expect(componentHandler.upgradeElement(button, jsClass: materialRippleType), 1);
-        expect(componentHandler.upgradeElement(button, jsClass: materialRippleType), 0);
-        await upgraded;
-        //await onComponentUpgraded(button).first;
+        int upgradeCount = 0;
+        onComponentUpgraded(button).listen((_) {
+          upgradeCount++;
+        });
+        //Future upgraded = onComponentUpgraded(button).skip(1).first;
+        componentHandler.upgradeElement(button, jsClass: materialButtonType);
+        expect(upgradeCount, 1);
+        componentHandler.upgradeElement(button, jsClass: materialButtonType);
+        expect(upgradeCount, 1);
+        componentHandler.upgradeElement(button, jsClass: materialRippleType);
+        expect(upgradeCount, 2);
       });
 
 
-      test('is_upgraded', () async {
-        var button = document.createElement('button');
-        button.className = 'mdl-button';
-        expect(isComponentUpgraded(button), false);
-        componentHandler.upgradeElement(button);
-        expect(isComponentUpgraded(button), true);
-      });
-
+      /*
       test('if_or_when_upgraded_before', () async {
         var button = document.createElement('button');
         button.className = 'mdl-button';
@@ -102,13 +76,7 @@ void main() {
         await upgraded;
       });
 
-      test('if_or_when_upgraded_before', () async {
-        var button = document.createElement('button');
-        button.className = 'mdl-button';
-        componentHandler.upgradeElement(button);
-        Future upgraded = whenComponentUpgraded(button);
-        await upgraded;
-      });
+      */
 
 
       test('future', () async {
@@ -118,22 +86,6 @@ void main() {
       });
 
 
-    });
-
-    group('findElement', () {
-
-    });
-    group('textfield', () {
-      test('autoUpgrade', () async {
-        var div = document.createElement('div');
-        Future upgraded = div.on['mdl-componentupgraded'].first;
-        div.className = 'mdl-textfield';
-        expect(div.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(div);
-        expect(div.attributes['data-upgraded'], contains('MaterialTextfield'));
-        // Wait for upgrade event
-        await upgraded;
-      });
     });
 
     group('progress', () {

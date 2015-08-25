@@ -24,46 +24,44 @@ class ComponentHandler {
   }
 
   /* NOT WORKING */
+  /*
   Future _upgrade(html.HtmlElement element) {
     upgradeElement(element);
     return mdl.whenComponentUpgraded(element);
   }
+  */
+
   Future upgrade(html.HtmlElement element) {
     //stream.listen((e) => print('upgraded'));
+    /*
     Completer completer = new Completer.sync();
-    int eventGotCount = 0;
-    int eventCount = null;
     Stream stream = mdl.onComponentUpgraded(element);
     stream.listen((e) {
-      // Not returned from upgradeElement yet
-      if (eventCount == null) {
-        eventGotCount++;
-        // go on
-      } else {
-        eventCount--;
-        if (eventCount <= 0) {
-          completer.complete();
-        }
-
+      if (!completer.isCompleted) {
+        completer.complete();
       }
     });
-    eventCount = upgradeElement(element);
-    eventCount -= eventGotCount;
-
-    if (eventCount == 0) {
-      if (!mdl.isComponentUpgraded(element)) {
-        throw 'element not upgrade ${element} ${new Map.from(element.attributes)}';
-      }
-      completer.complete();
+    */
+    upgradeElement(element);
+    if (!mdl.isComponentUpgraded(element)) {
+      throw 'element not upgrade ${element} ${new Map.from(element.attributes)}';
     }
-    return completer.future;
+    //return completer.future;
+    return new Future.value();
   }
 
 
   /// Upgrade a specific element
   /// return the number of upgrades performed
-  int upgradeElement(html.Element element, { String jsClass }) {
+  void upgradeElement(html.Element element, { String jsClass }) {
+    if (jsClass == null) {
+      _jsComponentHandler.callMethod('upgradeElement', [element]);
+    } else {
+      _jsComponentHandler.callMethod('upgradeElement', [element, jsClass]);
+    }
+  }
     // Handle when no jsClass is specified
+    /*
     if (jsClass == null) {
       List<String> jsClasses = [];
       html.CssClassSet classes = element.classes;
@@ -108,6 +106,7 @@ class ComponentHandler {
       return 1;
     }
   }
+  */
 }
 
 ComponentHandler _componentHandler;

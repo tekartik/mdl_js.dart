@@ -1,5 +1,6 @@
 library tekartik.mdj_js.textfield;
 
+import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'dart:html' as html;
 import "mdl_classes.dart" as mdl;
 import "mdl_js.dart" as mdl;
@@ -11,5 +12,5 @@ void textfieldChange(html.Element textfield, String value) {
 }
 
 textfieldUpgrade(html.Element textfield) {
-  mdl.componentHandler.upgradeElement(textfield);
+  mdl.componentHandler.upgradeElement(textfield, jsClass: materialTextfieldType);
 }

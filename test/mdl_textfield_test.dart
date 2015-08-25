@@ -1,12 +1,13 @@
 @TestOn("browser")
 library tekartik.mdl_js.compoenent_handler_test;
 
+import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_textfield.dart';
-import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:tekartik_mdl_js/mdl_component.dart';
 import 'package:test/test.dart';
 import 'dart:html';
+import 'dart:async';
 
 void main() {
 
@@ -31,9 +32,25 @@ void main() {
       expect(isComponentUpgraded(textfield), false);
       expect(textfield.attributes['data-upgraded'], isNull);
 
+      //print(new Map.from(textfield.attributes));
       textfieldUpgrade(textfield);
+      //print(new Map.from(textfield.attributes));
       expect(isComponentUpgraded(textfield), true);
       expect(textfield.attributes['data-upgraded'], contains('MaterialTextfield'));
+    });
+
+    test('autoUpgrade', () async {
+      var div = document.createElement('div');
+      Future upgraded = div.on['mdl-componentupgraded'].first;
+      div.className = 'mdl-textfield';
+      expect(div.attributes['data-upgraded'], isNull);
+      componentHandler.upgradeElement(div);
+      expect(div.attributes['data-upgraded'], isNull);
+      div.className = 'mdl-textfield mdl-js-textfield';
+      componentHandler.upgradeElement(div);
+      expect(div.attributes['data-upgraded'], contains('MaterialTextfield'));
+      // Wait for upgrade event
+      await upgraded;
     });
 
     test('change', () async {
