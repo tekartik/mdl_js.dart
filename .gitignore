@@ -14,4 +14,4 @@ packages
 pubspec.lock
 
 # webstorm
-.idea/
+.idea/.packages
