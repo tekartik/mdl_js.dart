@@ -5,6 +5,7 @@ import 'dart:js' as js;
 import "mdl_classes.dart" as mdl;
 import "mdl_component.dart" as mdl;
 import 'dart:async';
+import 'package:js/js.dart';
 
 final String materialTextfieldType = 'MaterialTextfield';
 final String materialButtonType = 'MaterialButton';
@@ -15,7 +16,7 @@ final String materialSliderType = 'MaterialSlider';
 final String materialLayoutType = 'MaterialLayout';
 
 class ComponentHandler {
-  js.JsObject _jsComponentHandler = js.context['componentHandler'];
+  JsComponentHandler _jsComponentHandler = jsComponentHandler;
 
   ComponentHandler() {
     if (_jsComponentHandler == null) {
@@ -55,9 +56,9 @@ class ComponentHandler {
   /// return the number of upgrades performed
   void upgradeElement(html.Element element, { String jsClass }) {
     if (jsClass == null) {
-      _jsComponentHandler.callMethod('upgradeElement', [element]);
+      _jsComponentHandler.upgradeElement(element);
     } else {
-      _jsComponentHandler.callMethod('upgradeElement', [element, jsClass]);
+      _jsComponentHandler.upgradeElement(element, jsClass);
     }
   }
     // Handle when no jsClass is specified
@@ -117,3 +118,14 @@ ComponentHandler get componentHandler {
   }
   return _componentHandler;
 }
+
+
+@JS()
+@anonymous
+class JsComponentHandler {
+  external upgradeDom();
+  external upgradeElement(html.Element element, [String jsClass]);
+}
+
+@JS('componentHandler')
+external JsComponentHandler get jsComponentHandler;

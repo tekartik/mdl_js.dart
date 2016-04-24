@@ -5,7 +5,10 @@ author: Alexandre Roux <alex@tekartik.com>
 environment:
   sdk: '>=1.0.0 <2.0.0'
 dependencies:
-  tekartik_utils:
-    git: git://github.com/alextekartik/tekartik_utils.dart
+  browser: any
+  js: any
+  tekartik_browser_utils:
+    git: git://github.com/tekartik/tekartik_browser_utils.dart
 dev_dependencies:
   test: any
+  dev_test: any

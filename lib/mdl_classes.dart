@@ -1,6 +1,7 @@
 library tekartik.mdj_js.classes;
 
 final String prefix = "mdl";
+const String _prefix = "mdl";
 String prefixed(String klass) => "$prefix-$klass";
 final String jsPrefix = prefixed("js");
 String jsPrefixed(String klass) => "$jsPrefix-$klass";
@@ -46,3 +47,16 @@ final String navigationLink = "${navigation}__link";
 final String isUpgraded = "is-upgraded";
 final String isVisible = "is-visible";
 final String isActive = "is-active";
+
+const String list = "${_prefix}-list";
+const String listItem = "${list}__item";
+const String listItemThreeLine = "${listItem}--three-line";
+
+const String listItemTextBody = "${listItem}-text-body";
+
+const String listItemPrimaryContent = "${listItem}-primary-content";
+const String listItemSecondaryContent = "${listItem}-secondary-content";
+const String listItemSecondaryAction = "${listItem}-secondary-action";
+const String listItemSecondaryInfo = "${listItem}-secondary-info";
+
+const listItemAvatar = "${listItem}-avatar";
