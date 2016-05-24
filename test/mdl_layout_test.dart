@@ -1,17 +1,14 @@
 @TestOn("browser")
-
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_layout.dart';
-import 'package:test/test.dart';
+import 'package:dev_test/test.dart';
 import 'dart:html';
 
 void main() {
-
   group('layout', () {
     setUp(() async {
-      await(loadMdlJs());
+      await (loadMdlJs());
     });
-
 
     test('upgrade', () async {
       var layout = layoutCreate();
@@ -21,6 +18,4 @@ void main() {
       expect(layout.attributes['data-upgraded'], contains('MaterialLayout'));
     });
   });
-
-
 }

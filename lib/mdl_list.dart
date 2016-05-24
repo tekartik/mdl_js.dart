@@ -64,7 +64,6 @@ html.Element listItemTextBodyCreate({String tag: "span"}) {
   return button;
 }
 
-
 html.Element listItemAvatarCreate({String tag: "i", String icon: iconPerson}) {
   List<String> classes = [mdl.listItemAvatar];
   if (icon != null) {

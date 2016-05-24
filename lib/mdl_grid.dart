@@ -7,8 +7,7 @@ import "mdl_js.dart" as mdl;
 html.DivElement gridCreate() {
   List<String> classes = [mdl.grid];
 
-  html.DivElement grid = new html.DivElement()
-    ..classes.addAll(classes);
+  html.DivElement grid = new html.DivElement()..classes.addAll(classes);
   return grid;
 }
 
@@ -22,8 +21,6 @@ html.DivElement cellCreate(int column, {int tablet, int phone}) {
     classes.add(mdl.cellColPhone(phone));
   }
 
-  html.DivElement cell = new html.DivElement()
-    ..classes.addAll(classes);
+  html.DivElement cell = new html.DivElement()..classes.addAll(classes);
   return cell;
 }
-

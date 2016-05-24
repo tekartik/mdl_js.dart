@@ -2,18 +2,15 @@
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:tekartik_mdl_js/mdl_component.dart';
-import 'package:test/test.dart';
+import 'package:dev_test/test.dart';
 import 'dart:html';
 import 'dart:async';
 
 void main() {
-
   group('button', () {
     setUp(() async {
-      await(loadMdlJs());
+      await (loadMdlJs());
     });
-
-
 
     test('button-upgrade-no-js', () async {
       var button = document.createElement('button');
@@ -37,7 +34,8 @@ void main() {
       expect(button.attributes['data-upgraded'], isNull);
       componentHandler.upgradeElement(button); //, jsClass: materialButtonType);
       expect(button.attributes['data-upgraded'], contains('MaterialButton'));
-      expect(button.attributes['data-upgraded'], isNot(contains('MaterialRipple')));
+      expect(button.attributes['data-upgraded'],
+          isNot(contains('MaterialRipple')));
       expect(isComponentUpgraded(button), true);
       // Wait for upgrade event
       await upgraded;
@@ -70,7 +68,8 @@ void main() {
       expect(button.attributes['data-upgraded'], isNull);
       componentHandler.upgradeElement(button, jsClass: materialButtonType);
       expect(button.attributes['data-upgraded'], contains('MaterialButton'));
-      expect(button.attributes['data-upgraded'], isNot(contains('MaterialRipple')));
+      expect(button.attributes['data-upgraded'],
+          isNot(contains('MaterialRipple')));
       // Wait for upgrade event
       await upgraded;
 
@@ -81,6 +80,5 @@ void main() {
       //print(button.outerHtml);
       await upgraded;
     });
-
   });
 }

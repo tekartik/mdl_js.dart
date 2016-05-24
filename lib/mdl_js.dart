@@ -1,7 +1,9 @@
+// needed
+@JS()
 library tekartik.mdl_js;
 
 import 'dart:html' as html;
-import 'dart:js' as js;
+//import 'dart:js' as js;
 import "mdl_classes.dart" as mdl;
 import "mdl_component.dart" as mdl;
 import 'dart:async';
@@ -51,18 +53,17 @@ class ComponentHandler {
     return new Future.value();
   }
 
-
   /// Upgrade a specific element
   /// return the number of upgrades performed
-  void upgradeElement(html.Element element, { String jsClass }) {
+  void upgradeElement(html.Element element, {String jsClass}) {
     if (jsClass == null) {
       _jsComponentHandler.upgradeElement(element);
     } else {
       _jsComponentHandler.upgradeElement(element, jsClass);
     }
   }
-    // Handle when no jsClass is specified
-    /*
+  // Handle when no jsClass is specified
+  /*
     if (jsClass == null) {
       List<String> jsClasses = [];
       html.CssClassSet classes = element.classes;
@@ -118,7 +119,6 @@ ComponentHandler get componentHandler {
   }
   return _componentHandler;
 }
-
 
 @JS()
 @anonymous

@@ -2,22 +2,19 @@
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:tekartik_mdl_js/mdl_component.dart';
-import 'package:test/test.dart';
+import 'package:dev_test/test.dart';
 import 'dart:html';
 import 'dart:async';
 
 void main() {
-
   group('component_handler', () {
     setUp(() async {
-      await(loadMdlJs());
+      await (loadMdlJs());
     });
 
     //_skip_test(_1, _2) {}
 
     group('button', () {
-
-
       test('bug_804', () async {
         // https://github.com/google/material-design-lite/issues/804
         var button = document.createElement('button');
@@ -26,7 +23,8 @@ void main() {
         expect(button.attributes['data-upgraded'], isNull);
         componentHandler.upgradeElement(button, jsClass: materialButtonType);
         expect(button.attributes['data-upgraded'], contains('MaterialButton'));
-        expect(button.attributes['data-upgraded'].contains('MaterialRipple'), isFalse);
+        expect(button.attributes['data-upgraded'].contains('MaterialRipple'),
+            isFalse);
         componentHandler.upgradeElement(button, jsClass: materialRippleType);
         expect(button.attributes['data-upgraded'], contains('MaterialButton'));
         expect(button.attributes['data-upgraded'], contains('MaterialRipple'));
@@ -64,7 +62,6 @@ void main() {
         expect(upgradeCount, 2);
       });
 
-
       /*
       test('if_or_when_upgraded_before', () async {
         var button = document.createElement('button');
@@ -76,14 +73,11 @@ void main() {
 
       */
 
-
       test('future', () async {
         var button = document.createElement('button');
         button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
         await componentHandler.upgrade(button);
       });
-
-
     });
 
     group('progress', () {
@@ -161,9 +155,5 @@ void main() {
         await upgraded;
       });
     });
-
-
   });
-
-
 }

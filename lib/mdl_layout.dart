@@ -4,12 +4,17 @@ import 'dart:html' as html;
 import "mdl_classes.dart" as mdl;
 import "mdl_js.dart" as mdl;
 
-html.DivElement layoutCreate({bool fixedDrawer, bool overlayDrawerButton, bool fixedHeader}) {
+html.DivElement layoutCreate(
+    {bool fixedDrawer, bool overlayDrawerButton, bool fixedHeader}) {
   /*
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--overlay-drawer-button">
    */
-  List<String> classes = [mdl.layout, mdl.jsLayout, mdl.layoutOverlayDrawerButton];
+  List<String> classes = [
+    mdl.layout,
+    mdl.jsLayout,
+    mdl.layoutOverlayDrawerButton
+  ];
   if (fixedDrawer == true) {
     classes.add(mdl.layoutFixedDrawer);
   }
@@ -19,8 +24,7 @@ html.DivElement layoutCreate({bool fixedDrawer, bool overlayDrawerButton, bool f
   if (overlayDrawerButton == true) {
     classes.add(mdl.layoutOverlayDrawerButton);
   }
-  html.DivElement div = new html.DivElement()
-  ..classes.addAll(classes);
+  html.DivElement div = new html.DivElement()..classes.addAll(classes);
 
   return div;
 }
@@ -42,8 +46,7 @@ layoutUpgrade(html.DivElement layout) {
  */
 
 html.DivElement layoutDrawerCreate() {
-  html.DivElement div = new html.DivElement()
-    ..classes.add(mdl.layoutDrawer);
+  html.DivElement div = new html.DivElement()..classes.add(mdl.layoutDrawer);
   return div;
 }
 
@@ -64,22 +67,19 @@ html.Element layoutHeaderCreate({bool transparent}) {
   if (transparent == true) {
     classes.add(mdl.layoutHeaderTransparent);
   }
-  html.Element header = new html.Element.tag("header")
-    ..classes.addAll(classes);
+  html.Element header = new html.Element.tag("header")..classes.addAll(classes);
   return header;
 }
 
 html.DivElement layoutHeaderRowCreate() {
   List<String> classes = [mdl.layoutHeaderRow];
-  html.DivElement row = new html.DivElement()
-    ..classes.addAll(classes);
+  html.DivElement row = new html.DivElement()..classes.addAll(classes);
   return row;
 }
 
 //
 html.SpanElement layoutTitleCreate({String title}) {
-  html.SpanElement span = new html.SpanElement()
-    ..classes.add(mdl.layoutTitle);
+  html.SpanElement span = new html.SpanElement()..classes.add(mdl.layoutTitle);
   if (title != null) {
     span.innerHtml = title;
   }
@@ -88,8 +88,7 @@ html.SpanElement layoutTitleCreate({String title}) {
 
 //
 html.DivElement layoutSpacerCreate() {
-  html.DivElement div = new html.DivElement()
-    ..classes.add(mdl.layoutSpacer);
+  html.DivElement div = new html.DivElement()..classes.add(mdl.layoutSpacer);
   return div;
 }
 
@@ -102,8 +101,7 @@ html.DivElement layoutSpacerCreate() {
 </nav>
 */
 html.Element navigationCreate() {
-  html.Element nav = new html.Element.tag("nav")
-    ..classes.add(mdl.navigation);
+  html.Element nav = new html.Element.tag("nav")..classes.add(mdl.navigation);
   return nav;
 }
 
@@ -120,7 +118,6 @@ html.AnchorElement navigationLinkCreate() {
 */
 html.Element layoutContentCreate() {
   List<String> classes = [mdl.layoutContent];
-  html.Element header = new html.Element.tag("main")
-    ..classes.addAll(classes);
+  html.Element header = new html.Element.tag("main")..classes.addAll(classes);
   return header;
 }

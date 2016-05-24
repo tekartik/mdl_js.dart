@@ -1,12 +1,10 @@
 @TestOn("browser")
-
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_js.dart';
-import 'package:test/test.dart';
+import 'package:dev_test/test.dart';
 import 'dart:js' as js;
 
 void main() {
-
   group('loader', () {
     test('load', () async {
       // calling componentHandler should fail
@@ -20,12 +18,11 @@ void main() {
       expect(success, isTrue);
 
       expect(js.context['componentHandler'], isNull);
-      await(loadMdlJs());
+      expect(jsComponentHandler, isNull);
+      await (loadMdlJs());
       expect(js.context['componentHandler'], isNotNull);
-      componentHandler;
+      expect(jsComponentHandler, isNotNull);
+      //componentHandler;
     });
-
   });
-
-
 }

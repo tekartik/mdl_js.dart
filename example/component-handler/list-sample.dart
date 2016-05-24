@@ -7,7 +7,6 @@ import 'dart:async';
 import 'dart:html';
 
 createList() {
-
   Element list = listCreate();
   Element item = listItemCreate();
   Element primaryContent = listItemPrimaryContentCreate();
@@ -37,21 +36,20 @@ createList() {
     ..append(listItemAvatarCreate())
     ..append(new SpanElement()..appendText("Simple person"))
     ..append(listItemTextBodyCreate()..appendText("Simple line"));
-  Element secondaryContent = listItemSecondaryContentCreate()..append(listItemSecondaryActionCreate()..append(newIcon(iconPerson)));
+  Element secondaryContent = listItemSecondaryContentCreate()
+    ..append(listItemSecondaryActionCreate()..append(newIcon(iconPerson)));
   list..append(item..append(primaryContent)..append(secondaryContent));
 
   querySelector('#container').append(list);
 }
+
 main() async {
   await Future.wait([loadMdlCss(), loadMdlJs(), loadMaterialIconsCss()]);
   print('list-sample');
 
   jsComponentHandler.upgradeDom();
 
-
-
   createList();
   await new Future.delayed(new Duration(milliseconds: 100));
   createList();
-
 }

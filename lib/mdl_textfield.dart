@@ -7,10 +7,12 @@ import "mdl_js.dart" as mdl;
 import 'dart:js' as js;
 
 void textfieldChange(html.Element textfield, String value) {
-  js.JsObject textField = new js.JsObject.fromBrowserObject(textfield)['MaterialTextfield'];
+  js.JsObject textField =
+      new js.JsObject.fromBrowserObject(textfield)['MaterialTextfield'];
   textField.callMethod('change', [value]);
 }
 
 textfieldUpgrade(html.Element textfield) {
-  mdl.componentHandler.upgradeElement(textfield, jsClass: materialTextfieldType);
+  mdl.componentHandler
+      .upgradeElement(textfield, jsClass: materialTextfieldType);
 }
