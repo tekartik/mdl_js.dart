@@ -50,6 +50,7 @@ final String isActive = "is-active";
 
 const String list = "${_prefix}-list";
 const String listItem = "${list}__item";
+const String listItemIcon = "${listItem}-icon";
 const String listItemThreeLine = "${listItem}--three-line";
 
 const String listItemTextBody = "${listItem}-text-body";

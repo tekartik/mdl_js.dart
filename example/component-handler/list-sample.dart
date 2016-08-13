@@ -1,10 +1,10 @@
-import 'package:tekartik_mdl_js/mdl_button.dart';
-import 'package:tekartik_mdl_js/mdl_list.dart';
-import 'package:tekartik_mdl_js/mdl_icons.dart';
-import 'package:tekartik_mdl_js/mdl_js_loader.dart';
-import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'dart:async';
 import 'dart:html';
+
+import 'package:tekartik_mdl_js/mdl_icons.dart';
+import 'package:tekartik_mdl_js/mdl_js.dart';
+import 'package:tekartik_mdl_js/mdl_js_loader.dart';
+import 'package:tekartik_mdl_js/mdl_list.dart';
 
 createList() {
   Element list = listCreate();
@@ -32,12 +32,13 @@ createList() {
    */
   item = listItemCreate(threeLine: true);
   primaryContent = listItemPrimaryContentCreate();
-  primaryContent
-    ..append(listItemAvatarCreate())
-    ..append(new SpanElement()..appendText("Simple person"))
-    ..append(listItemTextBodyCreate()..appendText("Simple line"));
+  primaryContent..append(listItemAvatarCreate())..append(
+      new SpanElement()..appendText("Simple person"))..append(
+      listItemTextBodyCreate()
+        ..appendText("Simple line"));
   Element secondaryContent = listItemSecondaryContentCreate()
-    ..append(listItemSecondaryActionCreate()..append(newIcon(iconPerson)));
+    ..append(listItemSecondaryActionCreate()
+      ..append(newIcon(iconPerson)));
   list..append(item..append(primaryContent)..append(secondaryContent));
 
   querySelector('#container').append(list);
