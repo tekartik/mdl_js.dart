@@ -1,7 +1,4 @@
-import 'dart:html';
-import 'dart:async';
-import 'package:tekartik_mdl_js/mdl_js.dart';
-import 'package:tekartik_mdl_js/mdl_textfield.dart';
+import 'package:tekartik_mdl_js/mdl_import.dart';
 
 var addTextfieldForm = () {
 
