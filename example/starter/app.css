@@ -1,0 +1,10 @@
+#app_content {
+    visibility: hidden;
+    max-width: 800px;
+    padding: 16px;
+    margin: auto;
+}
+
+#app_content.app-ready {
+    visibility: visible;
+}

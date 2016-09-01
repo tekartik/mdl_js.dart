@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>test_menu_starter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="app_content">
+    <form action="#">
+        <div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="app_username">
+            <label class="mdl-textfield__label" for="app_username">username</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="app_password">
+            <label class="mdl-textfield__label" for="app_password">password</label>
+        </div>
+        </div>
+        <div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="app_wsurl">
+                <label class="mdl-textfield__label" for="app_wsurl">url</label>
+            </div>
+</div>
+    </form>
+
+    <!-- Accent-colored raised button with ripple -->
+    <button id="app_call_webservice" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        CALL WEBSERVICE
+    </button>
+
+    <div id="app_url"></div>
+
+
+</div>
+<script src="packages/tekartik_mdl_js/js/material.min.js"></script>
+<script type="application/dart" src="app.dart"></script>
+<script src="packages/browser/dart.js"></script>
+</body>
+</html>
