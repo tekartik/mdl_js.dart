@@ -1,7 +1,6 @@
 import 'package:tekartik_mdl_js/mdl_import.dart';
 
 var addTextfieldForm = () {
-
   /*
   var form = document.createElement("form");
   form.setAttribute("action", "#");
@@ -27,17 +26,26 @@ var addTextfieldForm = () {
   */
   TextField textField;
   var thatChangeTextField;
-  thatChangeTextField = new TextField(label: "withLabel", value: "to change", errorLabel: "Take care", floatingLabel: true)
-  ..onChange.listen((_) {
-    print('new value ${thatChangeTextField.value}');
-  });
+  thatChangeTextField = new TextField(
+      label: "withLabel",
+      value: "to change",
+      errorLabel: "Take care",
+      floatingLabel: true)
+    ..onChange.listen((_) {
+      print('new value ${thatChangeTextField.value}');
+    });
   textField = thatChangeTextField;
   document.getElementById('container').append(textField.element);
   textField = new TextField(value: "My EditField");
   document.getElementById('container').append(textField.element);
-  textField = new TextField(label: "withLabel", value: "My EditField", numeric: true, errorLabel: "Take care", floatingLabel: true);
+  textField = new TextField(
+      label: "withLabel",
+      value: "My EditField",
+      numeric: true,
+      errorLabel: "Take care",
+      floatingLabel: true);
   document.getElementById('container').append(textField.element);
-  textField.label= "Some label";
+  textField.label = "Some label";
   //textfieldChange(div, "1324");
 };
 
@@ -62,7 +70,7 @@ var addOldTextfieldForm = () {
   div.append(label);
   div.append(span);
   form.append(div);
-  componentHandler.upgradeElement(div);//, materialTextfieldType);
+  componentHandler.upgradeElement(div); //, materialTextfieldType);
   document.getElementById('container').append(form);
   textfieldChange(div, "1324");
 };
@@ -73,8 +81,6 @@ main() {
 
   addOldTextfieldForm();
   new Timer(new Duration(milliseconds: 2000), addOldTextfieldForm);
-
-
 }
 
 //}, 0);

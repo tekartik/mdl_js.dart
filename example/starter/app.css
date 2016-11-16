@@ -3,8 +3,11 @@
     max-width: 800px;
     padding: 16px;
     margin: auto;
+    opacity: 0;
 }
 
 #app_content.app-ready {
     visibility: visible;
+    opacity: 1;
+    transition: opacity 3s;
 }

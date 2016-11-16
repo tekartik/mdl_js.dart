@@ -32,13 +32,12 @@ createList() {
    */
   item = listItemCreate(threeLine: true);
   primaryContent = listItemPrimaryContentCreate();
-  primaryContent..append(listItemAvatarCreate())..append(
-      new SpanElement()..appendText("Simple person"))..append(
-      listItemTextBodyCreate()
-        ..appendText("Simple line"));
+  primaryContent
+    ..append(listItemAvatarCreate())
+    ..append(new SpanElement()..appendText("Simple person"))
+    ..append(listItemTextBodyCreate()..appendText("Simple line"));
   Element secondaryContent = listItemSecondaryContentCreate()
-    ..append(listItemSecondaryActionCreate()
-      ..append(newIcon(iconPerson)));
+    ..append(listItemSecondaryActionCreate()..append(newIcon(iconPerson)));
   list..append(item..append(primaryContent)..append(secondaryContent));
 
   querySelector('#container').append(list);

@@ -11,7 +11,7 @@ import 'dart:async';
 void textfieldChange(html.Element textfield, String value) {
   value ??= "";
   js.JsObject textField =
-  new js.JsObject.fromBrowserObject(textfield)['MaterialTextfield'];
+      new js.JsObject.fromBrowserObject(textfield)['MaterialTextfield'];
   textField.callMethod('change', [value]);
 }
 
@@ -35,12 +35,16 @@ class TextField {
   html.LabelElement _labelElement;
 
   TextField(
-      {String id, String value, bool numeric, String label, String inputId, String errorLabel,
+      {String id,
+      String value,
+      bool numeric,
+      String label,
+      String inputId,
+      String errorLabel,
       bool floatingLabel: true}) {
     //var form = document.createElement("form");
     //form.setAttribute("action", "#");
-    var div = document.createElement("div")
-      ..id = id;
+    var div = document.createElement("div")..id = id;
     _textFieldElement = div;
 
     div.className = "mdl-textfield mdl-js-textfield textfield-demo";
@@ -69,7 +73,6 @@ class TextField {
     div.append(input);
     div.append(_labelElement);
     div.append(span);
-
 
     if (floatingLabel == true) {
       _textFieldElement.classes.add("mdl-textfield--floating-label");

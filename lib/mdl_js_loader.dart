@@ -5,16 +5,46 @@ import 'package:tekartik_browser_utils/css_utils.dart';
 import 'dart:async';
 import 'dart:js' as js;
 import 'mdl_version.dart';
+import 'package:tekartik_common_utils/env_utils.dart';
+import 'package:pub_semver/pub_semver.dart';
+
+// Load jquery and bootstrap
+Future loadMdl() async {
+  if (isRelease) {
+    await Future.wait([
+      () async {
+        await loadCdnMdlCss();
+        await loadCdnMaterialIconsCss();
+      }(),
+      () async {
+        await loadCdnMdlJs();
+      }()
+    ]);
+  } else {
+    await Future.wait([
+      () async {
+        await loadMdlCss();
+        await loadMaterialIconsCss();
+      }(),
+      () async {
+        await loadMdlJs();
+      }()
+    ]);
+  }
+}
 
 //<script defer src="https://code.getmdl.io/1.2.0/material.min.js"></script>
-Future loadCdnMdlJs() async {
+Future loadCdnMdlJs({Version version}) async {
+  version ??= mdlVersionDefault;
+
   // already loaded?
   if (js.context['componentHandler'] != null) {
     return null;
   }
 
   // load mdl js
-  await loadJavascriptScript("https://code.getmdl.io/${version}/material.min.js");
+  await loadJavascriptScript(
+      "https://code.getmdl.io/${version}/material.min.js");
   return null;
 }
 
@@ -35,8 +65,10 @@ Future loadMdlCss() async {
 
 // <link rel="stylesheet" href="https://code.getmdl.io/1.2.0/material.indigo-pink.min.css">
 
-Future loadCdnMdlCss({String theme: "indigo-pink"}) async {
-  await loadStylesheet("https://code.getmdl.io/${version}/material.${theme}.min.css");
+Future loadCdnMdlCss({Version version, String theme: "indigo-pink"}) async {
+  version ??= mdlVersionDefault;
+  await loadStylesheet(
+      "https://code.getmdl.io/${version}/material.${theme}.min.css");
 }
 
 Future loadCdnMaterialIconsCss() async {

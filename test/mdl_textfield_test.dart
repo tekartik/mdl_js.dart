@@ -22,6 +22,7 @@ void main() {
       textfield.append(input);
       return textfield;
     }
+
     test('upgrade', () async {
       DivElement textfield = _createTextfield();
 
