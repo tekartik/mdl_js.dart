@@ -24,6 +24,6 @@ void main() {
       expect(js.context['componentHandler'], isNotNull);
       expect(jsComponentHandler, isNotNull);
       //componentHandler;
-    });
+    }, skip: "content-shell");
   });
 }
