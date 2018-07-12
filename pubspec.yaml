@@ -9,12 +9,13 @@ dependencies:
   browser: any
   js: any
   tekartik_browser_utils:
-    git: git://github.com/tekartik/browser_utils.dart
+    git:
+      url: git://github.com/tekartik/browser_utils.dart
+      ref: dart2
   chrome_travis:
-     git: git://github.com/tekartik/chrome_travis.dart
-  dart_to_js_script_rewriter: any
-transformers:
-  - dart_to_js_script_rewriter
+    git:
+      url: git://github.com/tekartik/chrome_travis.dart
+      ref: dart2
 dev_dependencies:
   test: any
   dev_test: any

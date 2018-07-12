@@ -61,7 +61,7 @@ class TextField {
     if (numeric == true) {
       this.pattern = "[0-9]*";
     }
-    _labelElement = document.createElement("label");
+    _labelElement = document.createElement("label") as html.LabelElement;
     _labelElement.className = "mdl-textfield__label";
     _labelElement.setAttribute("for", input.id);
     _labelElement.text = label;

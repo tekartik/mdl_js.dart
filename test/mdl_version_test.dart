@@ -9,8 +9,8 @@ void main() {
   group('version', () {
     test('upgrade', () async {
       // check the version defined
-      String minJs = await HttpRequest
-          .getString("packages/tekartik_mdl_js/js/material.min.js");
+      String minJs = await HttpRequest.getString(
+          "packages/tekartik_mdl_js/js/material.min.js");
       Iterable<String> lines = LineSplitter.split(minJs);
       Version minJsVersion;
       for (String line in lines) {

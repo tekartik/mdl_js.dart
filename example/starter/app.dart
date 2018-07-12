@@ -9,11 +9,11 @@ main() async {
   assert(() {
     isRelease = false;
     return true;
-  });
+  }());
 
   if (isRelease) {
-    await Future
-        .wait([loadCdnMdlCss(), loadCdnMdlJs(), loadCdnMaterialIconsCss()]);
+    await Future.wait(
+        [loadCdnMdlCss(), loadCdnMdlJs(), loadCdnMaterialIconsCss()]);
   } else {
     await Future.wait([loadMdlCss(), loadMdlJs(), loadMaterialIconsCss()]);
   }

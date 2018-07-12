@@ -1,6 +1,6 @@
 import 'package:tekartik_mdl_js/mdl_import.dart';
 
-var addTextfieldForm = () {
+void addTextfieldForm() {
   /*
   var form = document.createElement("form");
   form.setAttribute("action", "#");
@@ -34,7 +34,7 @@ var addTextfieldForm = () {
     ..onChange.listen((_) {
       print('new value ${thatChangeTextField.value}');
     });
-  textField = thatChangeTextField;
+  textField = thatChangeTextField as TextField;
   document.getElementById('container').append(textField.element);
   textField = new TextField(value: "My EditField");
   document.getElementById('container').append(textField.element);
@@ -47,9 +47,9 @@ var addTextfieldForm = () {
   document.getElementById('container').append(textField.element);
   textField.label = "Some label";
   //textfieldChange(div, "1324");
-};
+}
 
-var addOldTextfieldForm = () {
+void addOldTextfieldForm() {
   var form = document.createElement("form");
   form.setAttribute("action", "#");
   var div = document.createElement("div");
@@ -73,7 +73,7 @@ var addOldTextfieldForm = () {
   componentHandler.upgradeElement(div); //, materialTextfieldType);
   document.getElementById('container').append(form);
   textfieldChange(div, "1324");
-};
+}
 
 main() {
   addTextfieldForm();

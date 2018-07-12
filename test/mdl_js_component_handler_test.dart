@@ -76,7 +76,7 @@ void main() {
       test('future', () async {
         var button = document.createElement('button');
         button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
-        await componentHandler.upgrade(button);
+        await componentHandler.upgrade(button as ButtonElement);
       });
     });
 
