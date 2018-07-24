@@ -5,7 +5,7 @@ import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_textfield.dart';
 import 'package:tekartik_mdl_js/mdl_component.dart';
-import 'package:dev_test/test.dart';
+import 'package:test/test.dart';
 import 'dart:html';
 import 'dart:async';
 
