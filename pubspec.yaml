@@ -4,7 +4,7 @@ description: Material design lite base resources and wrappers
 author: Alexandre Roux <alex@tekartik.com>
 homepage: https://github.com/tekartik/mdl_js.dart
 environment:
-  sdk: '>=1.0.0 <2.0.0'
+  sdk: '>=2.0.0-dev.58 <3.0.0'
 dependencies:
   browser: any
   js: any
