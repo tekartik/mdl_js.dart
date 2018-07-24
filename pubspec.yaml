@@ -6,7 +6,6 @@ homepage: https://github.com/tekartik/mdl_js.dart
 environment:
   sdk: '>=2.0.0-dev.58 <3.0.0'
 dependencies:
-  browser: any
   js: any
   tekartik_browser_utils:
     git:
@@ -19,3 +18,6 @@ dependencies:
 dev_dependencies:
   test: any
   dev_test: any
+  build_runner: '>=0.9.0'
+  build_test: '>=0.10.2'
+  build_web_compilers: '>=0.4.0'
