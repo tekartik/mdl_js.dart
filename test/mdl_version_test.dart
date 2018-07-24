@@ -1,4 +1,6 @@
 @TestOn("browser")
+library tekartik_mdl_js.test.mdl_version_test.dart;
+
 import 'package:tekartik_mdl_js/mdl_version.dart';
 import 'package:dev_test/test.dart';
 import 'dart:html';
