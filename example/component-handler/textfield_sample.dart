@@ -26,7 +26,7 @@ void addTextfieldForm() {
   */
   TextField textField;
   var thatChangeTextField;
-  thatChangeTextField = new TextField(
+  thatChangeTextField = TextField(
       label: "withLabel",
       value: "to change",
       errorLabel: "Take care",
@@ -36,9 +36,9 @@ void addTextfieldForm() {
     });
   textField = thatChangeTextField as TextField;
   document.getElementById('container').append(textField.element);
-  textField = new TextField(value: "My EditField");
+  textField = TextField(value: "My EditField");
   document.getElementById('container').append(textField.element);
-  textField = new TextField(
+  textField = TextField(
       label: "withLabel",
       value: "My EditField",
       numeric: true,
@@ -77,10 +77,10 @@ void addOldTextfieldForm() {
 
 main() {
   addTextfieldForm();
-  new Timer(new Duration(milliseconds: 2000), addTextfieldForm);
+  Timer(Duration(milliseconds: 2000), addTextfieldForm);
 
   addOldTextfieldForm();
-  new Timer(new Duration(milliseconds: 2000), addOldTextfieldForm);
+  Timer(Duration(milliseconds: 2000), addOldTextfieldForm);
 }
 
 //}, 0);

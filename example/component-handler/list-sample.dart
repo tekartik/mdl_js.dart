@@ -34,7 +34,7 @@ createList() {
   primaryContent = listItemPrimaryContentCreate();
   primaryContent
     ..append(listItemAvatarCreate())
-    ..append(new SpanElement()..appendText("Simple person"))
+    ..append(SpanElement()..appendText("Simple person"))
     ..append(listItemTextBodyCreate()..appendText("Simple line"));
   Element secondaryContent = listItemSecondaryContentCreate()
     ..append(listItemSecondaryActionCreate()..append(newIcon(iconPerson)));
@@ -50,6 +50,6 @@ main() async {
   jsComponentHandler.upgradeDom();
 
   createList();
-  await new Future.delayed(new Duration(milliseconds: 100));
+  await Future.delayed(Duration(milliseconds: 100));
   createList();
 }

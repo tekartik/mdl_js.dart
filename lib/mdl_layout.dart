@@ -24,7 +24,7 @@ html.DivElement layoutCreate(
   if (overlayDrawerButton == true) {
     classes.add(mdl.layoutOverlayDrawerButton);
   }
-  html.DivElement div = new html.DivElement()..classes.addAll(classes);
+  html.DivElement div = html.DivElement()..classes.addAll(classes);
 
   return div;
 }
@@ -46,7 +46,7 @@ layoutUpgrade(html.DivElement layout) {
  */
 
 html.DivElement layoutDrawerCreate() {
-  html.DivElement div = new html.DivElement()..classes.add(mdl.layoutDrawer);
+  html.DivElement div = html.DivElement()..classes.add(mdl.layoutDrawer);
   return div;
 }
 
@@ -67,19 +67,19 @@ html.Element layoutHeaderCreate({bool transparent}) {
   if (transparent == true) {
     classes.add(mdl.layoutHeaderTransparent);
   }
-  html.Element header = new html.Element.tag("header")..classes.addAll(classes);
+  html.Element header = html.Element.tag("header")..classes.addAll(classes);
   return header;
 }
 
 html.DivElement layoutHeaderRowCreate() {
   List<String> classes = [mdl.layoutHeaderRow];
-  html.DivElement row = new html.DivElement()..classes.addAll(classes);
+  html.DivElement row = html.DivElement()..classes.addAll(classes);
   return row;
 }
 
 //
 html.SpanElement layoutTitleCreate({String title}) {
-  html.SpanElement span = new html.SpanElement()..classes.add(mdl.layoutTitle);
+  html.SpanElement span = html.SpanElement()..classes.add(mdl.layoutTitle);
   if (title != null) {
     span.innerHtml = title;
   }
@@ -88,7 +88,7 @@ html.SpanElement layoutTitleCreate({String title}) {
 
 //
 html.DivElement layoutSpacerCreate() {
-  html.DivElement div = new html.DivElement()..classes.add(mdl.layoutSpacer);
+  html.DivElement div = html.DivElement()..classes.add(mdl.layoutSpacer);
   return div;
 }
 
@@ -101,12 +101,12 @@ html.DivElement layoutSpacerCreate() {
 </nav>
 */
 html.Element navigationCreate() {
-  html.Element nav = new html.Element.tag("nav")..classes.add(mdl.navigation);
+  html.Element nav = html.Element.tag("nav")..classes.add(mdl.navigation);
   return nav;
 }
 
 html.AnchorElement navigationLinkCreate() {
-  html.AnchorElement nav = new html.AnchorElement()
+  html.AnchorElement nav = html.AnchorElement()
     ..classes.add(mdl.navigationLink);
   return nav;
 }
@@ -118,6 +118,6 @@ html.AnchorElement navigationLinkCreate() {
 */
 html.Element layoutContentCreate() {
   List<String> classes = [mdl.layoutContent];
-  html.Element header = new html.Element.tag("main")..classes.addAll(classes);
+  html.Element header = html.Element.tag("main")..classes.addAll(classes);
   return header;
 }

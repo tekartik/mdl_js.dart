@@ -19,8 +19,7 @@ void main() {
         String prefix = "@version v";
         int index = line.indexOf(prefix);
         if (index != -1) {
-          minJsVersion =
-              new Version.parse(line.substring(index + prefix.length));
+          minJsVersion = Version.parse(line.substring(index + prefix.length));
           break;
         }
       }
