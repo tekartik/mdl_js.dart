@@ -11,7 +11,7 @@ import 'dart:async';
 void textfieldChange(html.Element textfield, String value) {
   value ??= "";
   js.JsObject textField =
-      new js.JsObject.fromBrowserObject(textfield)['MaterialTextfield'];
+      js.JsObject.fromBrowserObject(textfield)['MaterialTextfield'];
   textField.callMethod('change', [value]);
 }
 
@@ -41,7 +41,7 @@ class TextField {
       String label,
       String inputId,
       String errorLabel,
-      bool floatingLabel: true}) {
+      bool floatingLabel = true}) {
     //var form = document.createElement("form");
     //form.setAttribute("action", "#");
     var div = document.createElement("div")..id = id;

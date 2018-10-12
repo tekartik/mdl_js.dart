@@ -16,9 +16,9 @@ void main() {
     });
 
     DivElement _createTextfield() {
-      DivElement textfield = new DivElement();
+      DivElement textfield = DivElement();
       textfield.className = 'mdl-textfield';
-      InputElement input = new InputElement();
+      InputElement input = InputElement();
       input.className = "mdl-textfield__input";
       input.setAttribute("type", "text");
       textfield.append(input);

@@ -47,10 +47,10 @@ class ComponentHandler {
     */
     upgradeElement(element);
     if (!mdl.isComponentUpgraded(element)) {
-      throw 'element not upgrade ${element} ${new Map.from(element.attributes)}';
+      throw 'element not upgrade ${element} ${Map.from(element.attributes)}';
     }
     //return completer.future;
-    return new Future.value();
+    return Future.value();
   }
 
   /// Upgrade a specific element
@@ -115,7 +115,7 @@ ComponentHandler _componentHandler;
 
 ComponentHandler get componentHandler {
   if (_componentHandler == null) {
-    _componentHandler = new ComponentHandler();
+    _componentHandler = ComponentHandler();
   }
   return _componentHandler;
 }

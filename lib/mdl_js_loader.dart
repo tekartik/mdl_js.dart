@@ -65,7 +65,7 @@ Future loadMdlCss() async {
 
 // <link rel="stylesheet" href="https://code.getmdl.io/1.2.0/material.indigo-pink.min.css">
 
-Future loadCdnMdlCss({Version version, String theme: "indigo-pink"}) async {
+Future loadCdnMdlCss({Version version, String theme = "indigo-pink"}) async {
   version ??= mdlVersionDefault;
   await loadStylesheet(
       "https://code.getmdl.io/${version}/material.${theme}.min.css");

@@ -12,7 +12,7 @@ bool isComponentUpgraded(html.Element element) =>
 /// eventCount: number of event to wait for
 Future whenComponentUpgraded(html.Element element) {
   if (isComponentUpgraded(element)) {
-    return new Future.value();
+    return Future.value();
   }
   Stream stream = onComponentUpgraded(element);
   return stream.first;
