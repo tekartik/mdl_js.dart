@@ -1,12 +1,14 @@
 library tekartik.mdl_js.loader;
 
-import 'package:tekartik_browser_utils/js_utils.dart';
-import 'package:tekartik_browser_utils/css_utils.dart';
 import 'dart:async';
 import 'dart:js' as js;
-import 'mdl_version.dart';
-import 'package:tekartik_common_utils/env_utils.dart';
+
 import 'package:pub_semver/pub_semver.dart';
+import 'package:tekartik_browser_utils/css_utils.dart';
+import 'package:tekartik_browser_utils/js_utils.dart';
+import 'package:tekartik_common_utils/env_utils.dart';
+
+import 'mdl_version.dart';
 
 // Load jquery and bootstrap
 Future loadMdl() async {

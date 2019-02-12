@@ -1,9 +1,10 @@
 library tekartik.mdj_js.list;
 
 import 'dart:html' as html;
+
 import "mdl_classes.dart" as mdl;
-import "mdl_js.dart" as mdl;
 import 'mdl_icons.dart';
+import "mdl_js.dart" as mdl;
 
 html.Element listCreate({bool mega}) {
   List<String> classes = [mdl.list];

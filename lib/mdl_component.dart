@@ -1,7 +1,7 @@
 library tekartik.mdj_js.component;
 
-import 'dart:html' as html;
 import 'dart:async';
+import 'dart:html' as html;
 
 Stream onComponentUpgraded(html.Element element) =>
     element.on['mdl-componentupgraded'];

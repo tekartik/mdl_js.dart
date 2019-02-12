@@ -2,12 +2,14 @@
 @JS()
 library tekartik.mdl_js;
 
+import 'dart:async';
 import 'dart:html' as html;
-//import 'dart:js' as js;
+
+import 'package:js/js.dart';
+
 import "mdl_classes.dart" as mdl;
 import "mdl_component.dart" as mdl;
-import 'dart:async';
-import 'package:js/js.dart';
+//import 'dart:js' as js;
 
 final String materialTextfieldType = 'MaterialTextfield';
 final String materialButtonType = 'MaterialButton';
@@ -62,8 +64,8 @@ class ComponentHandler {
       _jsComponentHandler.upgradeElement(element, jsClass);
     }
   }
-  // Handle when no jsClass is specified
-  /*
+// Handle when no jsClass is specified
+/*
     if (jsClass == null) {
       List<String> jsClasses = [];
       html.CssClassSet classes = element.classes;
@@ -123,8 +125,9 @@ ComponentHandler get componentHandler {
 @JS()
 @anonymous
 class JsComponentHandler {
-  external upgradeDom();
-  external upgradeElement(html.Element element, [String jsClass]);
+  external dynamic upgradeDom();
+
+  external dynamic upgradeElement(html.Element element, [String jsClass]);
 }
 
 @JS('componentHandler')

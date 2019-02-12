@@ -1,21 +1,24 @@
 library tekartik.mdj_js.textfield;
 
-import 'package:tekartik_mdl_js/mdl_js.dart';
+import 'dart:async';
 import 'dart:html' as html;
 import 'dart:html';
+import 'dart:js' as js;
+
+import 'package:tekartik_mdl_js/mdl_js.dart';
+
 import "mdl_classes.dart" as mdl;
 import "mdl_js.dart" as mdl;
-import 'dart:js' as js;
-import 'dart:async';
 
 void textfieldChange(html.Element textfield, String value) {
   value ??= "";
   js.JsObject textField =
-      js.JsObject.fromBrowserObject(textfield)['MaterialTextfield'];
+      js.JsObject.fromBrowserObject(textfield)['MaterialTextfield']
+          as js.JsObject;
   textField.callMethod('change', [value]);
 }
 
-textfieldUpgrade(html.Element textfield) {
+void textfieldUpgrade(html.Element textfield) {
   mdl.componentHandler
       .upgradeElement(textfield, jsClass: materialTextfieldType);
 }
@@ -48,7 +51,7 @@ class TextField {
     _textFieldElement = div;
 
     div.className = "mdl-textfield mdl-js-textfield textfield-demo";
-    InputElement input = document.createElement("input");
+    InputElement input = document.createElement("input") as InputElement;
     input.className = "mdl-textfield__input";
     input.setAttribute("type", "text");
     //input.setAttribute("pattern", "[0-9]*");

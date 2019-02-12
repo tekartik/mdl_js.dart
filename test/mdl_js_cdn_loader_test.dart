@@ -1,10 +1,11 @@
 @TestOn("browser")
 library tekartik_mdl_js.test.mdl_js_cdn_loader_test.dart;
 
-import 'package:tekartik_mdl_js/mdl_js_loader.dart';
-import 'package:tekartik_mdl_js/mdl_js.dart';
-import 'package:test/test.dart';
 import 'dart:js' as js;
+
+import 'package:tekartik_mdl_js/mdl_js.dart';
+import 'package:tekartik_mdl_js/mdl_js_loader.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('cdn_loader', () {

@@ -21,11 +21,11 @@ html.Element buttonCreate(
   return button;
 }
 
-buttonUpgrade(html.Element button) {
+void buttonUpgrade(html.Element button) {
   mdl.componentHandler.upgradeElement(button);
 }
 
-buttonSetActive(html.Element button, bool active) {
+void buttonSetActive(html.Element button, bool active) {
   if (active) {
     button.classes.add(mdl.isActive);
   } else {

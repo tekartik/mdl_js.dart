@@ -1,12 +1,13 @@
 @TestOn("browser")
 library tekartik_mdl_js.test.mdl_js_component_handler_test.dart;
 
-import 'package:tekartik_mdl_js/mdl_js_loader.dart';
-import 'package:tekartik_mdl_js/mdl_js.dart';
-import 'package:tekartik_mdl_js/mdl_component.dart';
-import 'package:dev_test/test.dart';
-import 'dart:html';
 import 'dart:async';
+import 'dart:html';
+
+import 'package:dev_test/test.dart';
+import 'package:tekartik_mdl_js/mdl_component.dart';
+import 'package:tekartik_mdl_js/mdl_js.dart';
+import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 
 void main() {
   group('component_handler', () {
@@ -130,8 +131,8 @@ void main() {
 
     group('slider', () {
       test('upgrade', () async {
-        DivElement inputWrapper = document.createElement('div');
-        InputElement input = document.createElement('input');
+        DivElement inputWrapper = document.createElement('div') as DivElement;
+        InputElement input = document.createElement('input') as InputElement;
         Future upgraded = input.on['mdl-componentupgraded'].first;
         input.className = 'mdl-slider mdl-js-slider';
         input.type = "range";
@@ -143,8 +144,8 @@ void main() {
         await upgraded;
       });
       test('autoUpgrade', () async {
-        DivElement inputWrapper = document.createElement('div');
-        InputElement input = document.createElement('input');
+        DivElement inputWrapper = document.createElement('div') as DivElement;
+        InputElement input = document.createElement('input') as InputElement;
         Future upgraded = input.on['mdl-componentupgraded'].first;
         input.className = 'mdl-slider mdl-js-slider';
         input.type = "range";

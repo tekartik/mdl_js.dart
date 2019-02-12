@@ -29,7 +29,7 @@ html.DivElement layoutCreate(
   return div;
 }
 
-layoutUpgrade(html.DivElement layout) {
+void layoutUpgrade(html.DivElement layout) {
   mdl.componentHandler.upgradeElement(layout);
 }
 
@@ -50,15 +50,15 @@ html.DivElement layoutDrawerCreate() {
   return div;
 }
 
-layoutDrawerShow(html.DivElement layoutDrawer) {
+void layoutDrawerShow(html.DivElement layoutDrawer) {
   layoutDrawer.classes.add(mdl.isVisible);
 }
 
-layoutDrawerHide(html.DivElement layoutDrawer) {
+void layoutDrawerHide(html.DivElement layoutDrawer) {
   layoutDrawer.classes.remove(mdl.isVisible);
 }
 
-layoutDrawerToggle(html.DivElement layoutDrawer) {
+void layoutDrawerToggle(html.DivElement layoutDrawer) {
   layoutDrawer.classes.toggle(mdl.isVisible);
 }
 

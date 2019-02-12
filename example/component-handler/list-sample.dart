@@ -6,7 +6,7 @@ import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_list.dart';
 
-createList() {
+void createList() {
   Element list = listCreate();
   Element item = listItemCreate();
   Element primaryContent = listItemPrimaryContentCreate();
@@ -43,7 +43,7 @@ createList() {
   querySelector('#container').append(list);
 }
 
-main() async {
+Future main() async {
   await Future.wait([loadMdlCss(), loadMdlJs(), loadMaterialIconsCss()]);
   print('list-sample');
 

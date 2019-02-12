@@ -8,7 +8,7 @@ import 'mdl_js_component_handler_test.dart' as mdl_js_component_handler_test;
 import 'mdl_layout_test.dart' as mdl_layout_test;
 import 'mdl_textfield_test.dart' as mdl_textfield_test;
 
-main() {
+void main() {
   group('all', () {
     mdl_button_test.main();
     mdl_classes_test.main();
