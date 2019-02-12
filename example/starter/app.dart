@@ -5,7 +5,7 @@ import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 
 bool isRelease = true;
 
-main() async {
+Future main() async {
   assert(() {
     isRelease = false;
     return true;

@@ -75,7 +75,7 @@ void addOldTextfieldForm() {
   textfieldChange(div, "1324");
 }
 
-main() {
+void main() {
   addTextfieldForm();
   Timer(Duration(milliseconds: 2000), addTextfieldForm);
 

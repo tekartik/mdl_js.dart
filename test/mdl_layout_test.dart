@@ -1,10 +1,11 @@
 @TestOn("browser")
 library tekartik_mdl_js.test.mdl_layout_test.dart;
 
+import 'dart:html';
+
+import 'package:dev_test/test.dart';
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_layout.dart';
-import 'package:dev_test/test.dart';
-import 'dart:html';
 
 void main() {
   group('layout', () {

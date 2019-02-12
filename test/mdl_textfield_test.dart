@@ -1,13 +1,14 @@
 @TestOn("browser")
 library tekartik_mdl_js.test.mdl_textfield_test.dart;
 
+import 'dart:async';
+import 'dart:html';
+
+import 'package:tekartik_mdl_js/mdl_component.dart';
 import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_textfield.dart';
-import 'package:tekartik_mdl_js/mdl_component.dart';
 import 'package:test/test.dart';
-import 'dart:html';
-import 'dart:async';
 
 void main() {
   group('textfield', () {
@@ -55,7 +56,7 @@ void main() {
 
     test('change', () async {
       DivElement textfield = _createTextfield();
-      InputElement input = textfield.querySelector('input');
+      final input = textfield.querySelector('input') as InputElement;
       textfieldUpgrade(textfield);
       expect(
           textfield.attributes['data-upgraded'], contains('MaterialTextfield'));
