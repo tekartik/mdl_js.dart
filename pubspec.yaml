@@ -1,5 +1,5 @@
 name: 'tekartik_mdl_js'
-version: 0.4.0
+version: 0.4.0+1
 description: Material design lite base resources and wrappers
 author: Alexandre Roux <alex@tekartik.com>
 homepage: https://github.com/tekartik/mdl_js.dart
@@ -11,7 +11,7 @@ dependencies:
     git:
       url: git://github.com/tekartik/browser_utils.dart
       ref: dart2
-    version: 0.6.8
+    version: '>=0.6.8+1'
   chrome_travis:
     git:
       url: git://github.com/tekartik/chrome_travis.dart
