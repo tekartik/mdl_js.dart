@@ -1,10 +1,10 @@
-name: 'tekartik_mdl_js'
-version: 0.4.0+1
+name: tekartik_mdl_js
+version: 0.4.0+2
 description: Material design lite base resources and wrappers
 author: Alexandre Roux <alex@tekartik.com>
 homepage: https://github.com/tekartik/mdl_js.dart
 environment:
-  sdk: '>=2.0.0-dev.58 <3.0.0'
+  sdk: '>=2.1.0-dev <3.0.0'
 dependencies:
   js: any
   tekartik_browser_utils:
@@ -22,3 +22,4 @@ dev_dependencies:
   build_runner: '>=0.9.0'
   build_test: '>=0.10.2'
   build_web_compilers: '>=0.4.0'
+  process_run: '>=0.10.1'
