@@ -1,4 +1,11 @@
+import 'dart:io';
+
 import 'package:process_run/shell.dart';
+import 'package:pub_semver/pub_semver.dart';
+
+Version parsePlatformVersion(String text) {
+  return Version.parse(text.split(' ').first);
+}
 
 Future main() async {
   var shell = Shell();
@@ -10,4 +17,13 @@ Future main() async {
 
   pub run test -p vm,chrome -j 1
   ''');
+
+  var dartVersion = parsePlatformVersion(Platform.version);
+  if (dartVersion >= Version(2, 4, 0, pre: 'dev')) {
+    await shell.run('''
+    # pub run build_runner test -- -p vm -j 1 test/multiplatform test/vm
+    # Currently running as 2 commands
+    pub run build_runner test -- -p chrome,vm
+  ''');
+  }
 }
