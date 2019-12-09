@@ -1,4 +1,4 @@
-@TestOn("browser")
+@TestOn('browser')
 library tekartik_mdl_js.test.mdl_textfield_test.dart;
 
 import 'dart:async';
@@ -17,17 +17,17 @@ void main() {
     });
 
     DivElement _createTextfield() {
-      DivElement textfield = DivElement();
+      final textfield = DivElement();
       textfield.className = 'mdl-textfield';
-      InputElement input = InputElement();
-      input.className = "mdl-textfield__input";
-      input.setAttribute("type", "text");
+      final input = InputElement();
+      input.className = 'mdl-textfield__input';
+      input.setAttribute('type', 'text');
       textfield.append(input);
       return textfield;
     }
 
     test('upgrade', () async {
-      DivElement textfield = _createTextfield();
+      final textfield = _createTextfield();
 
       expect(isComponentUpgraded(textfield), false);
       expect(textfield.attributes['data-upgraded'], isNull);
@@ -55,13 +55,13 @@ void main() {
     });
 
     test('change', () async {
-      DivElement textfield = _createTextfield();
+      final textfield = _createTextfield();
       final input = textfield.querySelector('input') as InputElement;
       textfieldUpgrade(textfield);
       expect(
           textfield.attributes['data-upgraded'], contains('MaterialTextfield'));
       expect(input.value, '');
-      textfieldChange(textfield, "some value");
+      textfieldChange(textfield, 'some value');
       expect(input.value, 'some value');
 
       // Wait for upgrade event

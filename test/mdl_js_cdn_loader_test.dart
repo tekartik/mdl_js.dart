@@ -1,4 +1,4 @@
-@TestOn("browser")
+@TestOn('browser')
 library tekartik_mdl_js.test.mdl_js_cdn_loader_test.dart;
 
 import 'dart:js' as js;

@@ -1,7 +1,6 @@
-@TestOn("browser")
+@TestOn('browser')
 library tekartik_mdl_js.test.mdl_js.dart;
 
-import 'dart:async';
 import 'dart:html';
 
 import 'package:dev_test/test.dart';
@@ -32,7 +31,7 @@ void main() {
       button.className = 'mdl-button mdl-js-button';
       //Future upgraded = button.on['mdl-componentupgraded'].first;
       //Future upgraded = onComponentUpgraded(button).first; //
-      Future upgraded = whenComponentUpgraded(button);
+      final upgraded = whenComponentUpgraded(button);
       expect(isComponentUpgraded(button), false);
       expect(button.attributes['data-upgraded'], isNull);
       componentHandler.upgradeElement(button); //, jsClass: materialButtonType);
@@ -50,7 +49,7 @@ void main() {
       button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
       //Future upgraded = button.on['mdl-componentupgraded'].first;
       //Future upgraded = onComponentUpgraded(button).first; //
-      Future upgraded = whenComponentUpgraded(button);
+      final upgraded = whenComponentUpgraded(button);
 
       expect(button.attributes['data-upgraded'], isNull);
       componentHandler.upgradeElement(button); //, jsClass: materialButtonType);
@@ -66,7 +65,7 @@ void main() {
       button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
       //Future upgraded = button.on['mdl-componentupgraded'].first;
       //Future upgraded = onComponentUpgraded(button).first; //
-      Future upgraded = onComponentUpgraded(button).first;
+      var upgraded = onComponentUpgraded(button).first;
 
       expect(button.attributes['data-upgraded'], isNull);
       componentHandler.upgradeElement(button, jsClass: materialButtonType);
