@@ -1,12 +1,12 @@
 library tekartik.mdj_js.button;
 
 import 'dart:html' as html;
-import "mdl_classes.dart" as mdl;
-import "mdl_js.dart" as mdl;
+import 'mdl_classes.dart' as mdl;
+import 'mdl_js.dart' as mdl;
 
 html.Element buttonCreate(
     {bool ripple = true, bool raised, bool colored, String tag = 'button'}) {
-  List<String> classes = [mdl.button, mdl.jsButton];
+  final classes = [mdl.button, mdl.jsButton];
   if (ripple == true) {
     classes.add(mdl.jsRippleEffect);
   }
@@ -17,7 +17,7 @@ html.Element buttonCreate(
     classes.add(mdl.buttonColored);
   }
 
-  html.Element button = html.Element.tag(tag)..classes.addAll(classes);
+  final button = html.Element.tag(tag)..classes.addAll(classes);
   return button;
 }
 

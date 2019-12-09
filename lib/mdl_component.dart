@@ -14,6 +14,6 @@ Future whenComponentUpgraded(html.Element element) {
   if (isComponentUpgraded(element)) {
     return Future.value();
   }
-  Stream stream = onComponentUpgraded(element);
+  final stream = onComponentUpgraded(element);
   return stream.first;
 }

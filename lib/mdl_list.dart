@@ -2,12 +2,12 @@ library tekartik.mdj_js.list;
 
 import 'dart:html' as html;
 
-import "mdl_classes.dart" as mdl;
+import 'mdl_classes.dart' as mdl;
 import 'mdl_icons.dart';
-import "mdl_js.dart" as mdl;
+import 'mdl_js.dart' as mdl;
 
 html.Element listCreate({bool mega}) {
-  List<String> classes = [mdl.list];
+  final classes = [mdl.list];
   /*
   if (ripple == true) {
     classes.add(mdl.jsRippleEffect);
@@ -24,7 +24,7 @@ html.Element listCreate({bool mega}) {
 }
 
 html.Element listItemCreate({bool threeLine}) {
-  List<String> classes = [mdl.listItem];
+  final classes = [mdl.listItem];
 
   if (threeLine == true) {
     classes.add(mdl.listItemThreeLine);
@@ -41,37 +41,37 @@ html.Element listItemCreate({bool threeLine}) {
   return button;
 }
 
-html.Element listItemPrimaryContentCreate({String tag = "span"}) {
-  List<String> classes = [mdl.listItemPrimaryContent];
-  html.Element button = html.Element.tag(tag)..classes.addAll(classes);
+html.Element listItemPrimaryContentCreate({String tag = 'span'}) {
+  final classes = [mdl.listItemPrimaryContent];
+  final button = html.Element.tag(tag)..classes.addAll(classes);
   return button;
 }
 
-html.Element listItemSecondaryContentCreate({String tag = "span"}) {
-  List<String> classes = [mdl.listItemSecondaryContent];
-  html.Element button = html.Element.tag(tag)..classes.addAll(classes);
+html.Element listItemSecondaryContentCreate({String tag = 'span'}) {
+  final classes = [mdl.listItemSecondaryContent];
+  final button = html.Element.tag(tag)..classes.addAll(classes);
   return button;
 }
 
-html.Element listItemSecondaryActionCreate({String tag = "a"}) {
-  List<String> classes = [mdl.listItemSecondaryAction];
-  html.Element button = html.Element.tag(tag)..classes.addAll(classes);
+html.Element listItemSecondaryActionCreate({String tag = 'a'}) {
+  final classes = [mdl.listItemSecondaryAction];
+  final button = html.Element.tag(tag)..classes.addAll(classes);
   return button;
 }
 
-html.Element listItemTextBodyCreate({String tag = "span"}) {
-  List<String> classes = [mdl.listItemTextBody];
-  html.Element button = html.Element.tag(tag)..classes.addAll(classes);
+html.Element listItemTextBodyCreate({String tag = 'span'}) {
+  final classes = [mdl.listItemTextBody];
+  final button = html.Element.tag(tag)..classes.addAll(classes);
   return button;
 }
 
 html.Element listItemAvatarCreate(
-    {String tag = "i", String icon = iconPerson}) {
-  List<String> classes = [mdl.listItemAvatar];
+    {String tag = 'i', String icon = iconPerson}) {
+  final classes = [mdl.listItemAvatar];
   if (icon != null) {
     classes.add(materialIcons);
   }
-  html.Element iElement = html.Element.tag(tag)..classes.addAll(classes);
+  final iElement = html.Element.tag(tag)..classes.addAll(classes);
   if (icon != null) {
     iElement.text = icon;
   }

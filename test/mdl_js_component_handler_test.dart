@@ -1,4 +1,4 @@
-@TestOn("browser")
+@TestOn('browser')
 library tekartik_mdl_js.test.mdl_js_component_handler_test.dart;
 
 import 'dart:async';
@@ -52,7 +52,7 @@ void main() {
       test('twice', () async {
         var button = document.createElement('button');
         button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
-        int upgradeCount = 0;
+        var upgradeCount = 0;
         onComponentUpgraded(button).listen((_) {
           upgradeCount++;
         });
@@ -131,11 +131,11 @@ void main() {
 
     group('slider', () {
       test('upgrade', () async {
-        DivElement inputWrapper = document.createElement('div') as DivElement;
-        InputElement input = document.createElement('input') as InputElement;
+        final inputWrapper = document.createElement('div') as DivElement;
+        final input = document.createElement('input') as InputElement;
         Future upgraded = input.on['mdl-componentupgraded'].first;
         input.className = 'mdl-slider mdl-js-slider';
-        input.type = "range";
+        input.type = 'range';
         inputWrapper.append(input);
         expect(input.attributes['data-upgraded'], isNull);
         componentHandler.upgradeElement(input, jsClass: materialSliderType);
@@ -144,11 +144,11 @@ void main() {
         await upgraded;
       });
       test('autoUpgrade', () async {
-        DivElement inputWrapper = document.createElement('div') as DivElement;
-        InputElement input = document.createElement('input') as InputElement;
+        final inputWrapper = document.createElement('div') as DivElement;
+        final input = document.createElement('input') as InputElement;
         Future upgraded = input.on['mdl-componentupgraded'].first;
         input.className = 'mdl-slider mdl-js-slider';
-        input.type = "range";
+        input.type = 'range';
         inputWrapper.append(input);
         expect(input.attributes['data-upgraded'], isNull);
         componentHandler.upgradeElement(input);

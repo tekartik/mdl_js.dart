@@ -7,8 +7,8 @@ import 'dart:html' as html;
 
 import 'package:js/js.dart';
 
-import "mdl_classes.dart" as mdl;
-import "mdl_component.dart" as mdl;
+import 'mdl_classes.dart' as mdl;
+import 'mdl_component.dart' as mdl;
 //import 'dart:js' as js;
 
 final String materialTextfieldType = 'MaterialTextfield';
@@ -20,11 +20,11 @@ final String materialSliderType = 'MaterialSlider';
 final String materialLayoutType = 'MaterialLayout';
 
 class ComponentHandler {
-  JsComponentHandler _jsComponentHandler = jsComponentHandler;
+  final _jsComponentHandler = jsComponentHandler;
 
   ComponentHandler() {
     if (_jsComponentHandler == null) {
-      throw "componentHandler not defined, make sure material.js is loaded";
+      throw 'componentHandler not defined, make sure material.js is loaded';
     }
   }
 
@@ -91,7 +91,7 @@ class ComponentHandler {
         jsClasses.add(materialRippleType);
       }
       if (jsClasses.isEmpty) {
-        throw "element type cannot be found";
+        throw 'element type cannot be found';
       } else {
         int count = 0;
         for (jsClass in jsClasses) {
@@ -102,7 +102,7 @@ class ComponentHandler {
     } else {
       String upgraded = element.dataset['upgraded'];
       if (upgraded != null) {
-        if (upgraded.split(",").contains(jsClass)) {
+        if (upgraded.split(',').contains(jsClass)) {
           return 0;
         }
       }
@@ -116,9 +116,7 @@ class ComponentHandler {
 ComponentHandler _componentHandler;
 
 ComponentHandler get componentHandler {
-  if (_componentHandler == null) {
-    _componentHandler = ComponentHandler();
-  }
+  _componentHandler ??= ComponentHandler();
   return _componentHandler;
 }
 

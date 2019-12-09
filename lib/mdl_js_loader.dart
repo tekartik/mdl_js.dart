@@ -35,7 +35,7 @@ Future loadMdl() async {
   }
 }
 
-//<script defer src="https://code.getmdl.io/1.2.0/material.min.js"></script>
+//<script defer src='https://code.getmdl.io/1.2.0/material.min.js'></script>
 Future loadCdnMdlJs({Version version}) async {
   version ??= mdlVersionDefault;
 
@@ -46,7 +46,7 @@ Future loadCdnMdlJs({Version version}) async {
 
   // load mdl js
   await loadJavascriptScript(
-      "https://code.getmdl.io/${version}/material.min.js");
+      'https://code.getmdl.io/${version}/material.min.js');
   return null;
 }
 
@@ -57,27 +57,27 @@ Future loadMdlJs() async {
   }
 
   // load mdl js
-  await loadJavascriptScript("packages/tekartik_mdl_js/js/material.min.js");
+  await loadJavascriptScript('packages/tekartik_mdl_js/js/material.min.js');
   return null;
 }
 
 Future loadMdlCss() async {
-  await loadStylesheet("packages/tekartik_mdl_js/css/material.min.css");
+  await loadStylesheet('packages/tekartik_mdl_js/css/material.min.css');
 }
 
-// <link rel="stylesheet" href="https://code.getmdl.io/1.2.0/material.indigo-pink.min.css">
+// <link rel='stylesheet' href='https://code.getmdl.io/1.2.0/material.indigo-pink.min.css'>
 
-Future loadCdnMdlCss({Version version, String theme = "indigo-pink"}) async {
+Future loadCdnMdlCss({Version version, String theme = 'indigo-pink'}) async {
   version ??= mdlVersionDefault;
   await loadStylesheet(
-      "https://code.getmdl.io/${version}/material.${theme}.min.css");
+      'https://code.getmdl.io/${version}/material.${theme}.min.css');
 }
 
 Future loadCdnMaterialIconsCss() async {
-  await loadStylesheet("//fonts.googleapis.com/icon?family=Material+Icons");
+  await loadStylesheet('//fonts.googleapis.com/icon?family=Material+Icons');
 }
 
 Future loadMaterialIconsCss() async {
   await loadStylesheet(
-      "packages/tekartik_mdl_js/font/material-design-icons/material-icons.css");
+      'packages/tekartik_mdl_js/font/material-design-icons/material-icons.css');
 }
