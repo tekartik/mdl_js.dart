@@ -1,8 +1,7 @@
 library tekartik.mdj_js.grid;
 
 import 'dart:html' as html;
-import 'mdl_classes.dart' as mdl;
-import 'mdl_js.dart' as mdl;
+import 'src/import.dart' as mdl;
 
 html.DivElement gridCreate() {
   final classes = [mdl.grid];

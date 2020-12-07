@@ -7,8 +7,7 @@ import 'dart:html' as html;
 
 import 'package:js/js.dart';
 
-import 'mdl_classes.dart' as mdl;
-import 'mdl_component.dart' as mdl;
+import 'src/import.dart' as mdl;
 //import 'dart:js' as js;
 
 final String materialTextfieldType = 'MaterialTextfield';

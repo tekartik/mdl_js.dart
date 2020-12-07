@@ -7,8 +7,7 @@ import 'dart:js' as js;
 
 import 'package:tekartik_mdl_js/mdl_js.dart';
 
-import 'mdl_classes.dart' as mdl;
-import 'mdl_js.dart' as mdl;
+import 'src/import.dart' as mdl;
 
 void textfieldChange(html.Element textfield, String value) {
   value ??= '';
