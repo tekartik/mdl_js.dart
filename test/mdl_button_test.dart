@@ -34,7 +34,8 @@ void main() {
       final upgraded = whenComponentUpgraded(button);
       expect(isComponentUpgraded(button), false);
       expect(button.attributes['data-upgraded'], isNull);
-      componentHandler!.upgradeElement(button); //, jsClass: materialButtonType);
+      componentHandler!
+          .upgradeElement(button); //, jsClass: materialButtonType);
       expect(button.attributes['data-upgraded'], contains('MaterialButton'));
       expect(button.attributes['data-upgraded'],
           isNot(contains('MaterialRipple')));
@@ -52,7 +53,8 @@ void main() {
       final upgraded = whenComponentUpgraded(button);
 
       expect(button.attributes['data-upgraded'], isNull);
-      componentHandler!.upgradeElement(button); //, jsClass: materialButtonType);
+      componentHandler!
+          .upgradeElement(button); //, jsClass: materialButtonType);
       expect(button.attributes['data-upgraded'], contains('MaterialButton'));
       expect(button.attributes['data-upgraded'], contains('MaterialRipple'));
       // Wait for upgrade event
