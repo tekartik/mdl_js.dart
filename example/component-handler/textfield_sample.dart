@@ -25,7 +25,7 @@ void addTextfieldForm() {
   //componentHandler.upgradeElement(div);//, materialTextfieldType);
   */
   TextField textField;
-  var thatChangeTextField;
+  late var thatChangeTextField;
   thatChangeTextField = TextField(
       label: 'withLabel',
       value: 'to change',
@@ -35,16 +35,16 @@ void addTextfieldForm() {
       print('new value ${thatChangeTextField.value}');
     });
   textField = thatChangeTextField as TextField;
-  document.getElementById('container').append(textField.element);
+  document.getElementById('container')!.append(textField.element!);
   textField = TextField(value: 'My EditField');
-  document.getElementById('container').append(textField.element);
+  document.getElementById('container')!.append(textField.element!);
   textField = TextField(
       label: 'withLabel',
       value: 'My EditField',
       numeric: true,
       errorLabel: 'Take care',
       floatingLabel: true);
-  document.getElementById('container').append(textField.element);
+  document.getElementById('container')!.append(textField.element!);
   textField.label = 'Some label';
   //textfieldChange(div, '1324');
 }
@@ -70,8 +70,8 @@ void addOldTextfieldForm() {
   div.append(label);
   div.append(span);
   form.append(div);
-  componentHandler.upgradeElement(div); //, materialTextfieldType);
-  document.getElementById('container').append(form);
+  componentHandler!.upgradeElement(div); //, materialTextfieldType);
+  document.getElementById('container')!.append(form);
   textfieldChange(div, '1324');
 }
 

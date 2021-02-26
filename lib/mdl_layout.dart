@@ -5,7 +5,7 @@ import 'mdl_classes.dart' as mdl;
 import 'mdl_js.dart' as mdl;
 
 html.DivElement layoutCreate(
-    {bool fixedDrawer, bool overlayDrawerButton, bool fixedHeader}) {
+    {bool? fixedDrawer, bool? overlayDrawerButton, bool? fixedHeader}) {
   /*
   <div class='mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--overlay-drawer-button'>
@@ -26,7 +26,7 @@ html.DivElement layoutCreate(
 }
 
 void layoutUpgrade(html.DivElement layout) {
-  mdl.componentHandler.upgradeElement(layout);
+  mdl.componentHandler!.upgradeElement(layout);
 }
 
 /*
@@ -58,7 +58,7 @@ void layoutDrawerToggle(html.DivElement layoutDrawer) {
   layoutDrawer.classes.toggle(mdl.isVisible);
 }
 
-html.Element layoutHeaderCreate({bool transparent}) {
+html.Element layoutHeaderCreate({bool? transparent}) {
   final classes = [mdl.layoutHeader];
   if (transparent == true) {
     classes.add(mdl.layoutHeaderTransparent);
@@ -74,7 +74,7 @@ html.DivElement layoutHeaderRowCreate() {
 }
 
 //
-html.SpanElement layoutTitleCreate({String title}) {
+html.SpanElement layoutTitleCreate({String? title}) {
   final span = html.SpanElement()..classes.add(mdl.layoutTitle);
   if (title != null) {
     span.innerHtml = title;

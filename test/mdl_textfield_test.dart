@@ -45,10 +45,10 @@ void main() {
       Future upgraded = div.on['mdl-componentupgraded'].first;
       div.className = 'mdl-textfield';
       expect(div.attributes['data-upgraded'], isNull);
-      componentHandler.upgradeElement(div);
+      componentHandler!.upgradeElement(div);
       expect(div.attributes['data-upgraded'], isNull);
       div.className = 'mdl-textfield mdl-js-textfield';
-      componentHandler.upgradeElement(div);
+      componentHandler!.upgradeElement(div);
       expect(div.attributes['data-upgraded'], contains('MaterialTextfield'));
       // Wait for upgrade event
       await upgraded;

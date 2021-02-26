@@ -21,12 +21,6 @@ final String materialLayoutType = 'MaterialLayout';
 class ComponentHandler {
   final _jsComponentHandler = jsComponentHandler;
 
-  ComponentHandler() {
-    if (_jsComponentHandler == null) {
-      throw 'componentHandler not defined, make sure material.js is loaded';
-    }
-  }
-
   /* NOT WORKING */
   /*
   Future _upgrade(html.HtmlElement element) {
@@ -56,7 +50,7 @@ class ComponentHandler {
 
   /// Upgrade a specific element
   /// return the number of upgrades performed
-  void upgradeElement(html.Element element, {String jsClass}) {
+  void upgradeElement(html.Element element, {String? jsClass}) {
     if (jsClass == null) {
       _jsComponentHandler.upgradeElement(element);
     } else {
@@ -112,9 +106,9 @@ class ComponentHandler {
   */
 }
 
-ComponentHandler _componentHandler;
+ComponentHandler? _componentHandler;
 
-ComponentHandler get componentHandler {
+ComponentHandler? get componentHandler {
   _componentHandler ??= ComponentHandler();
   return _componentHandler;
 }
@@ -124,7 +118,7 @@ ComponentHandler get componentHandler {
 class JsComponentHandler {
   external dynamic upgradeDom();
 
-  external dynamic upgradeElement(html.Element element, [String jsClass]);
+  external dynamic upgradeElement(html.Element element, [String? jsClass]);
 }
 
 @JS('componentHandler')

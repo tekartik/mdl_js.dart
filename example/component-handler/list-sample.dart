@@ -40,7 +40,7 @@ void createList() {
     ..append(listItemSecondaryActionCreate()..append(newIcon(iconPerson)));
   list..append(item..append(primaryContent)..append(secondaryContent));
 
-  querySelector('#container').append(list);
+  querySelector('#container')!.append(list);
 }
 
 Future main() async {

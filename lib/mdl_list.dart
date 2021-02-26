@@ -5,7 +5,7 @@ import 'dart:html' as html;
 import 'mdl_icons.dart';
 import 'src/import.dart' as mdl;
 
-html.Element listCreate({bool mega}) {
+html.Element listCreate({bool? mega}) {
   final classes = [mdl.list];
   /*
   if (ripple == true) {
@@ -22,7 +22,7 @@ html.Element listCreate({bool mega}) {
   return button;
 }
 
-html.Element listItemCreate({bool threeLine}) {
+html.Element listItemCreate({bool? threeLine}) {
   final classes = [mdl.listItem];
 
   if (threeLine == true) {
@@ -65,7 +65,7 @@ html.Element listItemTextBodyCreate({String tag = 'span'}) {
 }
 
 html.Element listItemAvatarCreate(
-    {String tag = 'i', String icon = iconPerson}) {
+    {String tag = 'i', String? icon = iconPerson}) {
   final classes = [mdl.listItemAvatar];
   if (icon != null) {
     classes.add(materialIcons);
