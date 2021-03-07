@@ -15,7 +15,7 @@ void main() {
       final minJs = await HttpRequest.getString(
           'packages/tekartik_mdl_js/js/material.min.js');
       final lines = LineSplitter.split(minJs);
-      Version minJsVersion;
+      Version? minJsVersion;
       for (final line in lines) {
         final prefix = '@version v';
         final index = line.indexOf(prefix);

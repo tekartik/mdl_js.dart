@@ -19,9 +19,9 @@ void main() {
       button.className = 'mdl-button';
       expect(button.attributes['data-upgraded'], isNull);
       expect(isComponentUpgraded(button), false);
-      componentHandler.upgradeElement(button);
+      componentHandler!.upgradeElement(button);
       expect(isComponentUpgraded(button), false);
-      componentHandler.upgradeElement(button, jsClass: materialButtonType);
+      componentHandler!.upgradeElement(button, jsClass: materialButtonType);
       expect(isComponentUpgraded(button), true);
       expect(button.attributes['data-upgraded'], ',MaterialButton');
     });
@@ -34,7 +34,8 @@ void main() {
       final upgraded = whenComponentUpgraded(button);
       expect(isComponentUpgraded(button), false);
       expect(button.attributes['data-upgraded'], isNull);
-      componentHandler.upgradeElement(button); //, jsClass: materialButtonType);
+      componentHandler!
+          .upgradeElement(button); //, jsClass: materialButtonType);
       expect(button.attributes['data-upgraded'], contains('MaterialButton'));
       expect(button.attributes['data-upgraded'],
           isNot(contains('MaterialRipple')));
@@ -52,7 +53,8 @@ void main() {
       final upgraded = whenComponentUpgraded(button);
 
       expect(button.attributes['data-upgraded'], isNull);
-      componentHandler.upgradeElement(button); //, jsClass: materialButtonType);
+      componentHandler!
+          .upgradeElement(button); //, jsClass: materialButtonType);
       expect(button.attributes['data-upgraded'], contains('MaterialButton'));
       expect(button.attributes['data-upgraded'], contains('MaterialRipple'));
       // Wait for upgrade event
@@ -68,7 +70,7 @@ void main() {
       var upgraded = onComponentUpgraded(button).first;
 
       expect(button.attributes['data-upgraded'], isNull);
-      componentHandler.upgradeElement(button, jsClass: materialButtonType);
+      componentHandler!.upgradeElement(button, jsClass: materialButtonType);
       expect(button.attributes['data-upgraded'], contains('MaterialButton'));
       expect(button.attributes['data-upgraded'],
           isNot(contains('MaterialRipple')));
@@ -76,7 +78,7 @@ void main() {
       await upgraded;
 
       upgraded = onComponentUpgraded(button).first;
-      componentHandler.upgradeElement(button, jsClass: materialRippleType);
+      componentHandler!.upgradeElement(button, jsClass: materialRippleType);
       expect(button.attributes['data-upgraded'], contains('MaterialButton'));
       expect(button.attributes['data-upgraded'], contains('MaterialRipple'));
       //print(button.outerHtml);

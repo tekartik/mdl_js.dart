@@ -10,7 +10,7 @@ html.DivElement gridCreate() {
   return grid;
 }
 
-html.DivElement cellCreate(int column, {int tablet, int phone}) {
+html.DivElement cellCreate(int column, {int? tablet, int? phone}) {
   final classes = [mdl.cell];
   classes.add(mdl.cellCol(column));
   if (tablet != null) {

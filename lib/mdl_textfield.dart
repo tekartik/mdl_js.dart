@@ -9,7 +9,7 @@ import 'package:tekartik_mdl_js/mdl_js.dart';
 
 import 'src/import.dart' as mdl;
 
-void textfieldChange(html.Element textfield, String value) {
+void textfieldChange(html.Element textfield, String? value) {
   value ??= '';
   final textField =
       js.JsObject.fromBrowserObject(textfield)['MaterialTextfield']
@@ -18,7 +18,7 @@ void textfieldChange(html.Element textfield, String value) {
 }
 
 void textfieldUpgrade(html.Element textfield) {
-  mdl.componentHandler
+  mdl.componentHandler!
       .upgradeElement(textfield, jsClass: materialTextfieldType);
 }
 
@@ -30,23 +30,26 @@ void textfieldUpgrade(html.Element textfield) {
 // <label class='mdl-textfield__label' for='sample2'>Number...</label>
 // <span class='mdl-textfield__error'>Input is not a number!</span></div></form>
 class TextField {
-  html.Element _textFieldElement; // a div
-  InputElement _inputElement;
+  html.Element? _textFieldElement; // a div
+  late InputElement _inputElement;
 
-  Element get element => _textFieldElement;
-  html.LabelElement _labelElement;
+  Element? get element => _textFieldElement;
+  late html.LabelElement _labelElement;
 
   TextField(
-      {String id,
-      String value,
-      bool numeric,
-      String label,
-      String inputId,
-      String errorLabel,
+      {String? id,
+      String? value,
+      bool? numeric,
+      String? label,
+      String? inputId,
+      String? errorLabel,
       bool floatingLabel = true}) {
     //var form = document.createElement('form');
     //form.setAttribute('action', '#');
-    var div = document.createElement('div')..id = id;
+    var div = document.createElement('div');
+    if (id != null) {
+      div.id = id;
+    }
     _textFieldElement = div;
 
     div.className = 'mdl-textfield mdl-js-textfield textfield-demo';
@@ -77,9 +80,9 @@ class TextField {
     div.append(span);
 
     if (floatingLabel == true) {
-      _textFieldElement.classes.add('mdl-textfield--floating-label');
+      _textFieldElement!.classes.add('mdl-textfield--floating-label');
     }
-    componentHandler.upgradeElement(div); //, materialTextfieldType);
+    componentHandler!.upgradeElement(div); //, materialTextfieldType);
 
     if (value != null) {
       this.value = value;
@@ -94,13 +97,13 @@ class TextField {
     _inputElement.pattern = pattern;
   }
 
-  set value(String value) {
-    textfieldChange(_textFieldElement, value);
+  set value(String? value) {
+    textfieldChange(_textFieldElement!, value);
   }
 
   set label(String label) {
     _labelElement.text = label;
   }
 
-  String get value => _inputElement.value;
+  String? get value => _inputElement.value;
 }

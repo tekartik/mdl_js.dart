@@ -5,7 +5,7 @@ import 'mdl_classes.dart' as mdl;
 import 'mdl_js.dart' as mdl;
 
 html.Element buttonCreate(
-    {bool ripple = true, bool raised, bool colored, String tag = 'button'}) {
+    {bool ripple = true, bool? raised, bool? colored, String tag = 'button'}) {
   final classes = [mdl.button, mdl.jsButton];
   if (ripple == true) {
     classes.add(mdl.jsRippleEffect);
@@ -22,7 +22,7 @@ html.Element buttonCreate(
 }
 
 void buttonUpgrade(html.Element button) {
-  mdl.componentHandler.upgradeElement(button);
+  mdl.componentHandler!.upgradeElement(button);
 }
 
 void buttonSetActive(html.Element button, bool active) {

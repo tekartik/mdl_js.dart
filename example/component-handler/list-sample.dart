@@ -13,7 +13,7 @@ void createList() {
   primaryContent
     ..append(listItemAvatarCreate())
     ..appendText('Simple person');
-  list..append(item..append(primaryContent));
+  list.append(item..append(primaryContent));
 
   /*
   <li class='mdl-list__item mdl-list__item--three-line'>
@@ -38,9 +38,9 @@ void createList() {
     ..append(listItemTextBodyCreate()..appendText('Simple line'));
   final secondaryContent = listItemSecondaryContentCreate()
     ..append(listItemSecondaryActionCreate()..append(newIcon(iconPerson)));
-  list..append(item..append(primaryContent)..append(secondaryContent));
+  list.append(item..append(primaryContent)..append(secondaryContent));
 
-  querySelector('#container').append(list);
+  querySelector('#container')!.append(list);
 }
 
 Future main() async {

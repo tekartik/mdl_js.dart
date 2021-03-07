@@ -24,11 +24,11 @@ void main() {
         button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
         Future upgraded = button.on['mdl-componentupgraded'].skip(1).first;
         expect(button.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(button, jsClass: materialButtonType);
+        componentHandler!.upgradeElement(button, jsClass: materialButtonType);
         expect(button.attributes['data-upgraded'], contains('MaterialButton'));
-        expect(button.attributes['data-upgraded'].contains('MaterialRipple'),
+        expect(button.attributes['data-upgraded']!.contains('MaterialRipple'),
             isFalse);
-        componentHandler.upgradeElement(button, jsClass: materialRippleType);
+        componentHandler!.upgradeElement(button, jsClass: materialRippleType);
         expect(button.attributes['data-upgraded'], contains('MaterialButton'));
         expect(button.attributes['data-upgraded'], contains('MaterialRipple'));
         // Wait for upgrade event
@@ -40,7 +40,7 @@ void main() {
         Future upgraded = button.on['mdl-componentupgraded'].skip(1).first;
         button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
         expect(button.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(button);
+        componentHandler!.upgradeElement(button);
         expect(button.attributes['data-upgraded'], contains('MaterialButton'));
         expect(button.attributes['data-upgraded'], contains('MaterialRipple'));
         // Wait for upgrade event
@@ -57,11 +57,11 @@ void main() {
           upgradeCount++;
         });
         //Future upgraded = onComponentUpgraded(button).skip(1).first;
-        componentHandler.upgradeElement(button, jsClass: materialButtonType);
+        componentHandler!.upgradeElement(button, jsClass: materialButtonType);
         expect(upgradeCount, 1);
-        componentHandler.upgradeElement(button, jsClass: materialButtonType);
+        componentHandler!.upgradeElement(button, jsClass: materialButtonType);
         expect(upgradeCount, 1);
-        componentHandler.upgradeElement(button, jsClass: materialRippleType);
+        componentHandler!.upgradeElement(button, jsClass: materialRippleType);
         expect(upgradeCount, 2);
       });
 
@@ -79,7 +79,7 @@ void main() {
       test('future', () async {
         var button = document.createElement('button');
         button.className = 'mdl-button mdl-js-button mdl-js-ripple-effect';
-        await componentHandler.upgrade(button as ButtonElement);
+        await componentHandler!.upgrade(button as ButtonElement);
       });
     });
 
@@ -89,7 +89,7 @@ void main() {
         Future upgraded = div.on['mdl-componentupgraded'].first;
         div.className = 'mdl-progress mdl-js-progress';
         expect(div.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(div, jsClass: materialProgressType);
+        componentHandler!.upgradeElement(div, jsClass: materialProgressType);
         expect(div.attributes['data-upgraded'], contains('MaterialProgress'));
         // Wait for upgrade event
         await upgraded;
@@ -99,7 +99,7 @@ void main() {
         Future upgraded = div.on['mdl-componentupgraded'].first;
         div.className = 'mdl-progress mdl-js-progress';
         expect(div.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(div);
+        componentHandler!.upgradeElement(div);
         expect(div.attributes['data-upgraded'], contains('MaterialProgress'));
         // Wait for upgrade event
         await upgraded;
@@ -112,7 +112,7 @@ void main() {
         Future upgraded = div.on['mdl-componentupgraded'].first;
         div.className = 'mdl-spinner mdl-js-spinner';
         expect(div.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(div, jsClass: materialSpinnerType);
+        componentHandler!.upgradeElement(div, jsClass: materialSpinnerType);
         expect(div.attributes['data-upgraded'], contains('MaterialSpinner'));
         // Wait for upgrade event
         await upgraded;
@@ -122,7 +122,7 @@ void main() {
         Future upgraded = input.on['mdl-componentupgraded'].first;
         input.className = 'mdl-spinner mdl-js-spinner';
         expect(input.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(input);
+        componentHandler!.upgradeElement(input);
         expect(input.attributes['data-upgraded'], contains('MaterialSpinner'));
         // Wait for upgrade event
         await upgraded;
@@ -138,7 +138,7 @@ void main() {
         input.type = 'range';
         inputWrapper.append(input);
         expect(input.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(input, jsClass: materialSliderType);
+        componentHandler!.upgradeElement(input, jsClass: materialSliderType);
         expect(input.attributes['data-upgraded'], contains('MaterialSlider'));
         // Wait for upgrade event
         await upgraded;
@@ -151,7 +151,7 @@ void main() {
         input.type = 'range';
         inputWrapper.append(input);
         expect(input.attributes['data-upgraded'], isNull);
-        componentHandler.upgradeElement(input);
+        componentHandler!.upgradeElement(input);
         expect(input.attributes['data-upgraded'], contains('MaterialSlider'));
         //print(inputWrapper.outerHtml);
         // Wait for upgrade event

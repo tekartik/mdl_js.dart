@@ -18,5 +18,5 @@ Future main() async {
     await Future.wait([loadMdlCss(), loadMdlJs(), loadMaterialIconsCss()]);
   }
 
-  document.body.querySelector('#app_content').classes.add('app-ready');
+  document.body!.querySelector('#app_content')!.classes.add('app-ready');
 }
