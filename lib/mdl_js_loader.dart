@@ -45,8 +45,7 @@ Future loadCdnMdlJs({Version? version}) async {
   }
 
   // load mdl js
-  await loadJavascriptScript(
-      'https://code.getmdl.io/${version}/material.min.js');
+  await loadJavascriptScript('https://code.getmdl.io/$version/material.min.js');
   return null;
 }
 
@@ -70,7 +69,7 @@ Future loadMdlCss() async {
 Future loadCdnMdlCss({Version? version, String theme = 'indigo-pink'}) async {
   version ??= mdlVersionDefault;
   await loadStylesheet(
-      'https://code.getmdl.io/${version}/material.${theme}.min.css');
+      'https://code.getmdl.io/$version/material.$theme.min.css');
 }
 
 Future loadCdnMaterialIconsCss() async {

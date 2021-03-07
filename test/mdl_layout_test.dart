@@ -15,7 +15,7 @@ void main() {
 
     test('upgrade', () async {
       var layout = layoutCreate();
-      DivElement()..append(layout); // need container
+      DivElement().append(layout); // need container
       expect(layout.attributes['data-upgraded'], isNull);
       layoutUpgrade(layout);
       expect(layout.attributes['data-upgraded'], contains('MaterialLayout'));
