@@ -6,6 +6,7 @@ import 'dart:async';
 import 'dart:html' as html;
 
 import 'package:js/js.dart';
+import 'package:tekartik_browser_utils/browser_utils_import.dart';
 
 import 'src/import.dart' as mdl;
 //import 'dart:js' as js;
@@ -21,6 +22,10 @@ final String materialLayoutType = 'MaterialLayout';
 class ComponentHandler {
   final _jsComponentHandler = jsComponentHandler;
 
+  ComponentHandler() {
+    // ignore: unnecessary_null_comparison
+    assert(_jsComponentHandler != null);
+  }
   /* NOT WORKING */
   /*
   Future _upgrade(html.HtmlElement element) {

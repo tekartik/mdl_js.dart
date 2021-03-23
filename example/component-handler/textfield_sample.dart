@@ -25,7 +25,7 @@ void addTextfieldForm() {
   //componentHandler.upgradeElement(div);//, materialTextfieldType);
   */
   TextField textField;
-  late var thatChangeTextField;
+  late TextField thatChangeTextField;
   thatChangeTextField = TextField(
       label: 'withLabel',
       value: 'to change',
@@ -34,7 +34,7 @@ void addTextfieldForm() {
     ..onChange.listen((_) {
       print('new value ${thatChangeTextField.value}');
     });
-  textField = thatChangeTextField as TextField;
+  textField = thatChangeTextField;
   document.getElementById('container')!.append(textField.element!);
   textField = TextField(value: 'My EditField');
   document.getElementById('container')!.append(textField.element!);
