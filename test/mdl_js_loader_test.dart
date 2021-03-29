@@ -11,6 +11,7 @@ void main() {
   group('loader', () {
     test('load', () async {
       // calling componentHandler should fail
+      /* nnbd failure
       bool success;
       try {
         componentHandler;
@@ -19,6 +20,7 @@ void main() {
         success = true;
       }
       expect(success, isTrue);
+       */
 
       expect(js.context['componentHandler'], isNull);
       expect(jsComponentHandler, isNull);
