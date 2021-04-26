@@ -1,5 +1,5 @@
-import 'package:tekartik_mdl_js/mdl_classes.dart';
 import 'package:dev_test/test.dart';
+import 'package:tekartik_mdl_js/mdl_classes.dart';
 
 void main() {
   group('classes', () {
