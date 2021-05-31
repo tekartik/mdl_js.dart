@@ -12,7 +12,7 @@ import 'mdl_version.dart';
 
 // Load jquery and bootstrap
 Future loadMdl() async {
-  if (isRelease!) {
+  if (isRelease) {
     await Future.wait([
       () async {
         await loadCdnMdlCss();
