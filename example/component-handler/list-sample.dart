@@ -38,7 +38,9 @@ void createList() {
     ..append(listItemTextBodyCreate()..appendText('Simple line'));
   final secondaryContent = listItemSecondaryContentCreate()
     ..append(listItemSecondaryActionCreate()..append(newIcon(iconPerson)));
-  list.append(item..append(primaryContent)..append(secondaryContent));
+  list.append(item
+    ..append(primaryContent)
+    ..append(secondaryContent));
 
   querySelector('#container')!.append(list);
 }
