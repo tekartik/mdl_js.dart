@@ -2,10 +2,8 @@
 @JS()
 library tekartik.mdl_js;
 
-import 'dart:async';
 import 'dart:html' as html;
 
-import 'package:js/js.dart';
 import 'package:tekartik_browser_utils/browser_utils_import.dart';
 
 import 'src/import.dart' as mdl;
