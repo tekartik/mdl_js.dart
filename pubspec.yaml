@@ -17,6 +17,7 @@ dependencies:
     git:
       url: https://github.com/tekartik/chrome_travis.dart
       ref: dart2_3
+  pub_semver: 
 dev_dependencies:
   test: any
   dev_test: any
