@@ -6,6 +6,7 @@ import 'dart:js' as js;
 import 'package:pub_semver/pub_semver.dart';
 import 'package:tekartik_browser_utils/css_utils.dart';
 import 'package:tekartik_browser_utils/js_utils.dart';
+// ignore: depend_on_referenced_packages
 import 'package:tekartik_common_utils/env_utils.dart';
 
 import 'mdl_version.dart';
