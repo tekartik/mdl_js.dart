@@ -16,7 +16,7 @@ void main() {
       await (loadMdlJs());
     });
 
-    DivElement _createTextfield() {
+    DivElement createTextfield() {
       final textfield = DivElement();
       textfield.className = 'mdl-textfield';
       final input = InputElement();
@@ -27,7 +27,7 @@ void main() {
     }
 
     test('upgrade', () async {
-      final textfield = _createTextfield();
+      final textfield = createTextfield();
 
       expect(isComponentUpgraded(textfield), false);
       expect(textfield.attributes['data-upgraded'], isNull);
@@ -55,7 +55,7 @@ void main() {
     });
 
     test('change', () async {
-      final textfield = _createTextfield();
+      final textfield = createTextfield();
       final input = textfield.querySelector('input') as InputElement;
       textfieldUpgrade(textfield);
       expect(
