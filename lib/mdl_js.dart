@@ -45,7 +45,7 @@ class ComponentHandler {
     */
     upgradeElement(element);
     if (!mdl.isComponentUpgraded(element)) {
-      throw 'element not upgrade $element ${Map.from(element.attributes)}';
+      throw 'element not upgrade $element ${Map<String, String>.from(element.attributes)}';
     }
     //return completer.future;
     return Future.value();
