@@ -52,6 +52,6 @@ Future main() async {
   jsComponentHandler.upgradeDom();
 
   createList();
-  await Future.delayed(const Duration(milliseconds: 100));
+  await Future<void>.delayed(const Duration(milliseconds: 100));
   createList();
 }
