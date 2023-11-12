@@ -79,7 +79,7 @@ class TextField {
     div.append(_labelElement);
     div.append(span);
 
-    if (floatingLabel == true) {
+    if (floatingLabel) {
       _textFieldElement!.classes.add('mdl-textfield--floating-label');
     }
     componentHandler!.upgradeElement(div); //, materialTextfieldType);
