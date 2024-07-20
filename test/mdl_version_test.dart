@@ -4,9 +4,9 @@ library tekartik_mdl_js.test.mdl_version_test.dart;
 import 'dart:convert';
 import 'dart:html';
 
-import 'package:dev_test/test.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:tekartik_mdl_js/mdl_version.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('version', () {

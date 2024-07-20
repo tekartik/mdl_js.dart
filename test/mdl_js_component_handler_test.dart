@@ -4,10 +4,10 @@ library tekartik_mdl_js.test.mdl_js_component_handler_test.dart;
 import 'dart:async';
 import 'dart:html';
 
-import 'package:dev_test/test.dart';
 import 'package:tekartik_mdl_js/mdl_component.dart';
 import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('component_handler', () {
