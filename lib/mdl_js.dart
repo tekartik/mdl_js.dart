@@ -4,7 +4,7 @@ library tekartik.mdl_js;
 
 import 'dart:html' as html;
 
-import 'package:tekartik_browser_utils/browser_utils_import.dart';
+import 'package:js/js.dart';
 
 import 'src/import.dart' as mdl;
 //import 'dart:js' as js;
