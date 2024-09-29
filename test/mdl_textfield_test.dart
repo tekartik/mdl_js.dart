@@ -1,5 +1,5 @@
 @TestOn('browser')
-library tekartik_mdl_js.test.mdl_textfield_test.dart;
+library;
 
 import 'dart:async';
 import 'dart:html';

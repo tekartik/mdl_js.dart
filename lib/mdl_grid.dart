@@ -1,4 +1,4 @@
-library tekartik.mdj_js.grid;
+library;
 
 import 'dart:html' as html;
 import 'src/import.dart' as mdl;

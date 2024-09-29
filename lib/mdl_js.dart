@@ -1,6 +1,6 @@
 // needed
 @JS()
-library tekartik.mdl_js;
+library;
 
 import 'dart:html' as html;
 

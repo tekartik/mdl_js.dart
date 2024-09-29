@@ -1,4 +1,4 @@
-library tekartik.mdj_js.component;
+library;
 
 import 'dart:async';
 import 'dart:html' as html;

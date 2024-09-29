@@ -1,4 +1,4 @@
-library tekartik.mdj_js.icons;
+library;
 
 import 'dart:html' as html;
 

@@ -1,4 +1,4 @@
-library tekartik.mdj_js.layout;
+library;
 
 import 'dart:html' as html;
 import 'mdl_classes.dart' as mdl;

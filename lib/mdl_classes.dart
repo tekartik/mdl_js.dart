@@ -1,4 +1,4 @@
-library tekartik.mdj_js.classes;
+library;
 
 final String prefix = 'mdl';
 const String _prefix = 'mdl';

@@ -1,4 +1,4 @@
-library tekartik.mdj_js.textfield;
+library;
 
 import 'dart:async';
 import 'dart:html' as html;

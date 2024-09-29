@@ -1,5 +1,5 @@
 @TestOn('browser')
-library tekartik_mdl_js.test.mdl_all_tests.dart;
+library;
 
 import 'package:test/test.dart';
 import 'mdl_button_test.dart' as mdl_button_test;
