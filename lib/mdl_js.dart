@@ -1,5 +1,6 @@
 // needed
 @JS()
+@Deprecated('Do no use')
 library;
 
 import 'dart:html' as html;

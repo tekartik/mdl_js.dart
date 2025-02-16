@@ -1,3 +1,6 @@
+@Deprecated('Do no use')
+library;
+
 export 'mdl_button.dart';
 export 'mdl_classes.dart';
 export 'mdl_component.dart';

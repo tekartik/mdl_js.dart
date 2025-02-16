@@ -1,5 +1,3 @@
-library;
-
 final String prefix = 'mdl';
 const String _prefix = 'mdl';
 String prefixed(String klass) => '$prefix-$klass';
