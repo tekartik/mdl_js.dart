@@ -22,7 +22,7 @@ Future loadMdl() async {
       }(),
       () async {
         await loadCdnMdlJs();
-      }()
+      }(),
     ]);
   } else {
     await Future.wait([
@@ -32,7 +32,7 @@ Future loadMdl() async {
       }(),
       () async {
         await loadMdlJs();
-      }()
+      }(),
     ]);
   }
 }
@@ -71,7 +71,8 @@ Future loadMdlCss() async {
 Future loadCdnMdlCss({Version? version, String theme = 'indigo-pink'}) async {
   version ??= mdlVersionDefault;
   await loadStylesheet(
-      'https://code.getmdl.io/$version/material.$theme.min.css');
+    'https://code.getmdl.io/$version/material.$theme.min.css',
+  );
 }
 
 Future loadCdnMaterialIconsCss() async {
@@ -80,5 +81,6 @@ Future loadCdnMaterialIconsCss() async {
 
 Future loadMaterialIconsCss() async {
   await loadStylesheet(
-      'packages/tekartik_mdl_js/font/material-design-icons/material-icons.css');
+    'packages/tekartik_mdl_js/font/material-design-icons/material-icons.css',
+  );
 }

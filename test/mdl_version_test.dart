@@ -12,8 +12,9 @@ void main() {
   group('version', () {
     test('upgrade', () async {
       // check the version defined
-      final minJs =
-          await read(Uri.parse('packages/tekartik_mdl_js/js/material.min.js'));
+      final minJs = await read(
+        Uri.parse('packages/tekartik_mdl_js/js/material.min.js'),
+      );
 
       final lines = LineSplitter.split(minJs);
       Version? minJsVersion;

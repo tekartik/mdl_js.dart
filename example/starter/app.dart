@@ -15,8 +15,11 @@ Future main() async {
   }());
 
   if (isRelease) {
-    await Future.wait(
-        [loadCdnMdlCss(), loadCdnMdlJs(), loadCdnMaterialIconsCss()]);
+    await Future.wait([
+      loadCdnMdlCss(),
+      loadCdnMdlJs(),
+      loadCdnMaterialIconsCss(),
+    ]);
   } else {
     await Future.wait([loadMdlCss(), loadMdlJs(), loadMaterialIconsCss()]);
   }

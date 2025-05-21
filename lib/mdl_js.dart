@@ -61,8 +61,9 @@ class ComponentHandler {
       _jsComponentHandler.upgradeElement(element, jsClass);
     }
   }
-// Handle when no jsClass is specified
-/*
+
+  // Handle when no jsClass is specified
+  /*
     if (jsClass == null) {
       List<String> jsClasses = [];
       html.CssClassSet classes = element.classes;

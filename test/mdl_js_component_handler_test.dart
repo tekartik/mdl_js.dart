@@ -28,8 +28,10 @@ void main() {
         expect(button.attributes['data-upgraded'], isNull);
         componentHandler!.upgradeElement(button, jsClass: materialButtonType);
         expect(button.attributes['data-upgraded'], contains('MaterialButton'));
-        expect(button.attributes['data-upgraded']!.contains('MaterialRipple'),
-            isFalse);
+        expect(
+          button.attributes['data-upgraded']!.contains('MaterialRipple'),
+          isFalse,
+        );
         componentHandler!.upgradeElement(button, jsClass: materialRippleType);
         expect(button.attributes['data-upgraded'], contains('MaterialButton'));
         expect(button.attributes['data-upgraded'], contains('MaterialRipple'));

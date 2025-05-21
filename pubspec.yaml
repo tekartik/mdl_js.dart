@@ -5,7 +5,7 @@ description: Material design lite base resources and wrappers
 homepage: https://github.com/tekartik/mdl_js.dart
 publish_to: none
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.7.0
 dependencies:
   js: any
   tekartik_browser_utils:
@@ -21,7 +21,7 @@ dependencies:
 dev_dependencies:
   http:
   test: ">=1.24.0"
-  dev_build: ">=1.1.0+2"
+  dev_build: ">=1.1.2"
   build_runner: ">=2.4.13"
   build_test: '>=0.10.2'
   build_web_compilers: ">=4.0.11"

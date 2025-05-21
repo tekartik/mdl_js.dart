@@ -19,8 +19,10 @@ void textfieldChange(html.Element textfield, String? value) {
 }
 
 void textfieldUpgrade(html.Element textfield) {
-  mdl.componentHandler!
-      .upgradeElement(textfield, jsClass: materialTextfieldType);
+  mdl.componentHandler!.upgradeElement(
+    textfield,
+    jsClass: materialTextfieldType,
+  );
 }
 
 // <div class='mdl-textfield mdl-js-textfield textfield-demo is-upgraded is-dirty'
@@ -37,14 +39,15 @@ class TextField {
   Element? get element => _textFieldElement;
   late html.LabelElement _labelElement;
 
-  TextField(
-      {String? id,
-      String? value,
-      bool? numeric,
-      String? label,
-      String? inputId,
-      String? errorLabel,
-      bool floatingLabel = true}) {
+  TextField({
+    String? id,
+    String? value,
+    bool? numeric,
+    String? label,
+    String? inputId,
+    String? errorLabel,
+    bool floatingLabel = true,
+  }) {
     //var form = document.createElement('form');
     //form.setAttribute('action', '#');
     var div = document.createElement('div');

@@ -35,7 +35,8 @@ void addTextfieldForm() {
       label: 'withLabel',
       value: 'to change',
       errorLabel: 'Take care',
-      floatingLabel: true)
+      floatingLabel: true,
+    )
     ..onChange.listen((_) {
       print('new value ${thatChangeTextField.value}');
     });
@@ -44,11 +45,12 @@ void addTextfieldForm() {
   textField = TextField(value: 'My EditField');
   document.getElementById('container')!.append(textField.element!);
   textField = TextField(
-      label: 'withLabel',
-      value: 'My EditField',
-      numeric: true,
-      errorLabel: 'Take care',
-      floatingLabel: true);
+    label: 'withLabel',
+    value: 'My EditField',
+    numeric: true,
+    errorLabel: 'Take care',
+    floatingLabel: true,
+  );
   document.getElementById('container')!.append(textField.element!);
   textField.label = 'Some label';
   //textfieldChange(div, '1324');

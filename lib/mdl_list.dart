@@ -65,8 +65,10 @@ html.Element listItemTextBodyCreate({String tag = 'span'}) {
   return button;
 }
 
-html.Element listItemAvatarCreate(
-    {String tag = 'i', String? icon = iconPerson}) {
+html.Element listItemAvatarCreate({
+  String tag = 'i',
+  String? icon = iconPerson,
+}) {
   final classes = [mdl.listItemAvatar];
   if (icon != null) {
     classes.add(materialIcons);
@@ -77,6 +79,7 @@ html.Element listItemAvatarCreate(
   }
   return iElement;
 }
+
 /*
 
 buttonUpgrade(html.Element button) {

@@ -5,8 +5,11 @@ import 'dart:html' as html;
 import 'mdl_classes.dart' as mdl;
 import 'mdl_js.dart' as mdl;
 
-html.DivElement layoutCreate(
-    {bool? fixedDrawer, bool? overlayDrawerButton, bool? fixedHeader}) {
+html.DivElement layoutCreate({
+  bool? fixedDrawer,
+  bool? overlayDrawerButton,
+  bool? fixedHeader,
+}) {
   /*
   <div class='mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--overlay-drawer-button'>

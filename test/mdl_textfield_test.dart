@@ -39,7 +39,9 @@ void main() {
       //print(new Map.from(textfield.attributes));
       expect(isComponentUpgraded(textfield), true);
       expect(
-          textfield.attributes['data-upgraded'], contains('MaterialTextfield'));
+        textfield.attributes['data-upgraded'],
+        contains('MaterialTextfield'),
+      );
     });
 
     test('autoUpgrade', () async {
@@ -61,7 +63,9 @@ void main() {
       final input = textfield.querySelector('input') as InputElement;
       textfieldUpgrade(textfield);
       expect(
-          textfield.attributes['data-upgraded'], contains('MaterialTextfield'));
+        textfield.attributes['data-upgraded'],
+        contains('MaterialTextfield'),
+      );
       expect(input.value, '');
       textfieldChange(textfield, 'some value');
       expect(input.value, 'some value');
