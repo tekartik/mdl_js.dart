@@ -38,9 +38,8 @@ void createList() {
     ..append(listItemAvatarCreate())
     ..append(SpanElement()..appendText('Simple person'))
     ..append(listItemTextBodyCreate()..appendText('Simple line'));
-  final secondaryContent =
-      listItemSecondaryContentCreate()
-        ..append(listItemSecondaryActionCreate()..append(newIcon(iconPerson)));
+  final secondaryContent = listItemSecondaryContentCreate()
+    ..append(listItemSecondaryActionCreate()..append(newIcon(iconPerson)));
   list.append(
     item
       ..append(primaryContent)

@@ -31,15 +31,16 @@ void addTextfieldForm() {
   */
   TextField textField;
   late TextField thatChangeTextField;
-  thatChangeTextField = TextField(
-      label: 'withLabel',
-      value: 'to change',
-      errorLabel: 'Take care',
-      floatingLabel: true,
-    )
-    ..onChange.listen((_) {
-      print('new value ${thatChangeTextField.value}');
-    });
+  thatChangeTextField =
+      TextField(
+          label: 'withLabel',
+          value: 'to change',
+          errorLabel: 'Take care',
+          floatingLabel: true,
+        )
+        ..onChange.listen((_) {
+          print('new value ${thatChangeTextField.value}');
+        });
   textField = thatChangeTextField;
   document.getElementById('container')!.append(textField.element!);
   textField = TextField(value: 'My EditField');
