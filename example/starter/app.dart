@@ -14,15 +14,7 @@ Future main() async {
     return true;
   }());
 
-  if (isRelease) {
-    await Future.wait([
-      loadCdnMdlCss(),
-      loadCdnMdlJs(),
-      loadCdnMaterialIconsCss(),
-    ]);
-  } else {
-    await Future.wait([loadMdlCss(), loadMdlJs(), loadMaterialIconsCss()]);
-  }
+  await Future.wait([loadMdlCss(), loadMdlJs(), loadMaterialIconsCss()]);
 
   document.body!.querySelector('#app_content')!.classes.add('app-ready');
 }
