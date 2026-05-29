@@ -39,6 +39,7 @@ void addTextfieldForm() {
           floatingLabel: true,
         )
         ..onChange.listen((_) {
+          // ignore: avoid_print
           print('new value ${thatChangeTextField.value}');
         });
   textField = thatChangeTextField;

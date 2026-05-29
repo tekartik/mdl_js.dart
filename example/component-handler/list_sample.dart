@@ -51,6 +51,7 @@ void createList() {
 
 Future main() async {
   await Future.wait([loadMdlCss(), loadMdlJs(), loadMaterialIconsCss()]);
+  // ignore: avoid_print
   print('list-sample');
 
   jsComponentHandler.upgradeDom();
