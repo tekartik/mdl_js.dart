@@ -44,6 +44,19 @@ void main() {
       );
     });
 
+    test('TextField input id', () {
+      var field = TextField(label: 'no id');
+      var input = field.element!.querySelector('input')!;
+      var label = field.element!.querySelector('label')!;
+      expect(input.id, isEmpty);
+      expect(label.getAttribute('for'), isNull);
+      field = TextField(label: 'with id', inputId: 'my');
+      input = field.element!.querySelector('input')!;
+      label = field.element!.querySelector('label')!;
+      expect(input.id, 'my_input');
+      expect(label.getAttribute('for'), 'my_input');
+    });
+
     test('autoUpgrade', () async {
       var div = document.createElement('div');
       Future upgraded = div.on['mdl-componentupgraded'].first;

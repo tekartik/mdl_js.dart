@@ -22,5 +22,16 @@ void main() {
       layoutUpgrade(layout);
       expect(layout.attributes['data-upgraded'], contains('MaterialLayout'));
     });
+
+    test('overlayDrawerButton', () {
+      expect(
+        layoutCreate().classes,
+        isNot(contains('mdl-layout--overlay-drawer-button')),
+      );
+      expect(
+        layoutCreate(overlayDrawerButton: true).classes,
+        contains('mdl-layout--overlay-drawer-button'),
+      );
+    });
   });
 }

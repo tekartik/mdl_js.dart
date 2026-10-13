@@ -62,7 +62,9 @@ class TextField {
     input.setAttribute('type', 'text');
     //input.setAttribute('pattern', '[0-9]*');
 
-    input.id = '${inputId}_input';
+    if (inputId != null) {
+      input.id = '${inputId}_input';
+    }
     _inputElement = input;
     if (value != null) {
       input.value = value;
@@ -72,7 +74,9 @@ class TextField {
     }
     _labelElement = document.createElement('label') as html.LabelElement;
     _labelElement.className = 'mdl-textfield__label';
-    _labelElement.setAttribute('for', input.id);
+    if (inputId != null) {
+      _labelElement.setAttribute('for', input.id);
+    }
     _labelElement.text = label;
     var span = document.createElement('span');
     span.className = 'mdl-textfield__error';

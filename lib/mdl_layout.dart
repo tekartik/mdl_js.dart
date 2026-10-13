@@ -14,7 +14,7 @@ html.DivElement layoutCreate({
   <div class='mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--overlay-drawer-button'>
    */
-  final classes = [mdl.layout, mdl.jsLayout, mdl.layoutOverlayDrawerButton];
+  final classes = [mdl.layout, mdl.jsLayout];
   if (fixedDrawer == true) {
     classes.add(mdl.layoutFixedDrawer);
   }
