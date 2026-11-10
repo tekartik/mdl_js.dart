@@ -1,10 +1,8 @@
 // ignore_for_file: deprecated_member_use_from_same_package
 
 import 'dart:async';
-// ignore: deprecated_member_use
-import 'dart:html';
-
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
+import 'package:web/web.dart' as web;
 
 bool isRelease = true;
 
@@ -16,5 +14,5 @@ Future main() async {
 
   await Future.wait([loadMdlCss(), loadMdlJs(), loadMaterialIconsCss()]);
 
-  document.body!.querySelector('#app_content')!.classes.add('app-ready');
+  web.document.body!.querySelector('#app_content')!.classList.add('app-ready');
 }

@@ -1,28 +1,27 @@
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package
-
-import 'dart:html';
+// ignore_for_file: deprecated_member_use_from_same_package
 
 import 'package:tekartik_common_utils/common_utils_import.dart';
 import 'package:tekartik_mdl_js/mdl_import.dart';
+import 'package:web/web.dart' as web;
 
 void addTextfieldForm() {
   /*
-  var form = document.createElement('form');
+  var form = web.document.createElement('form');
   form.setAttribute('action', '#');
-  var div = document.createElement('div');
+  var div = web.document.createElement('div');
   div.className = 'mdl-textfield mdl-js-textfield textfield-demo';
-  var input = document.createElement('input');
+  var input = web.document.createElement('input');
   input.className = 'mdl-textfield__input';
   input.setAttribute('type', 'text');
   input.setAttribute('pattern', '[0-9]*');
   input.setAttribute('id', 'sample2');
-  var label = document.createElement('label');
+  var label = web.document.createElement('label');
   label.className = 'mdl-textfield__label';
   label.setAttribute('for', 'sample2');
-  label.text = 'Number...';
-  var span = document.createElement('span');
+  label.textContent = 'Number...';
+  var span = web.document.createElement('span');
   span.className = 'mdl-textfield__error';
-  span.text = 'Input is not a number!';
+  span.textContent = 'Input is not a number!';
   div.append(input);
   div.append(label);
   div.append(span);
@@ -43,9 +42,9 @@ void addTextfieldForm() {
           print('new value ${thatChangeTextField.value}');
         });
   textField = thatChangeTextField;
-  document.getElementById('container')!.append(textField.element!);
+  web.document.getElementById('container')!.append(textField.element!);
   textField = TextField(value: 'My EditField');
-  document.getElementById('container')!.append(textField.element!);
+  web.document.getElementById('container')!.append(textField.element!);
   textField = TextField(
     label: 'withLabel',
     value: 'My EditField',
@@ -53,34 +52,34 @@ void addTextfieldForm() {
     errorLabel: 'Take care',
     floatingLabel: true,
   );
-  document.getElementById('container')!.append(textField.element!);
+  web.document.getElementById('container')!.append(textField.element!);
   textField.label = 'Some label';
   //textfieldChange(div, '1324');
 }
 
 void addOldTextfieldForm() {
-  var form = document.createElement('form');
+  var form = web.document.createElement('form');
   form.setAttribute('action', '#');
-  var div = document.createElement('div');
+  var div = web.document.createElement('div');
   div.className = 'mdl-textfield mdl-js-textfield textfield-demo';
-  var input = document.createElement('input');
+  var input = web.document.createElement('input');
   input.className = 'mdl-textfield__input';
   input.setAttribute('type', 'text');
   input.setAttribute('pattern', '[0-9]*');
   input.setAttribute('id', 'sample2');
-  var label = document.createElement('label');
+  var label = web.document.createElement('label');
   label.className = 'mdl-textfield__label';
   label.setAttribute('for', 'sample2');
-  label.text = 'Number...';
-  var span = document.createElement('span');
+  label.textContent = 'Number...';
+  var span = web.document.createElement('span');
   span.className = 'mdl-textfield__error';
-  span.text = 'Input is not a number!';
+  span.textContent = 'Input is not a number!';
   div.append(input);
   div.append(label);
   div.append(span);
   form.append(div);
   componentHandler!.upgradeElement(div); //, materialTextfieldType);
-  document.getElementById('container')!.append(form);
+  web.document.getElementById('container')!.append(form);
   textfieldChange(div, '1324');
 }
 

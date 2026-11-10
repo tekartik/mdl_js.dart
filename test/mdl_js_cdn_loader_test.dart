@@ -1,9 +1,10 @@
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package
+// ignore_for_file: deprecated_member_use_from_same_package
 
 @TestOn('browser')
 library;
 
-import 'dart:js' as js;
+import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
 import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
@@ -23,11 +24,11 @@ void main() {
       }
        */
 
-      expect(js.context['componentHandler'], isNull);
+      expect(globalContext['componentHandler'], isNull);
       expect(jsComponentHandler, isNull);
       await (loadCdnMdlJs());
       await (loadCdnMdlCss());
-      expect(js.context['componentHandler'], isNotNull);
+      expect(globalContext['componentHandler'], isNotNull);
       expect(jsComponentHandler, isNotNull);
       //componentHandler;
     });

@@ -1,71 +1,45 @@
+/// MDL list.
 @Deprecated('Do no use')
 library;
 
-import 'dart:html' as html;
+import 'package:web/web.dart' as web;
 
 import 'mdl_icons.dart';
+import 'src/dom_prv.dart';
 import 'src/import.dart' as mdl;
 
-html.Element listCreate({bool? mega}) {
-  final classes = [mdl.list];
-  /*
-  if (ripple == true) {
-    classes.add(mdl.jsRippleEffect);
-  }
-  if (raised == true) {
-    classes.add(mdl.buttonRaised);
-  }
-  if (colored == true) {
-    classes.add(mdl.buttonColored);
-  }
-  */
-  html.Element button = html.UListElement()..classes.addAll(classes);
-  return button;
+/// A new list (`ul`).
+web.Element listCreate({bool? mega}) {
+  return createElementWithClasses('ul', [mdl.list]);
 }
 
-html.Element listItemCreate({bool? threeLine}) {
+/// A new list item (`li`).
+web.Element listItemCreate({bool? threeLine}) {
   final classes = [mdl.listItem];
-
   if (threeLine == true) {
     classes.add(mdl.listItemThreeLine);
   }
-  /*
-  if (raised == true) {
-    classes.add(mdl.buttonRaised);
-  }
-  if (colored == true) {
-    classes.add(mdl.buttonColored);
-  }
-  */
-  html.Element button = html.LIElement()..classes.addAll(classes);
-  return button;
+  return createElementWithClasses('li', classes);
 }
 
-html.Element listItemPrimaryContentCreate({String tag = 'span'}) {
-  final classes = [mdl.listItemPrimaryContent];
-  final button = html.Element.tag(tag)..classes.addAll(classes);
-  return button;
-}
+/// The primary content of an item.
+web.Element listItemPrimaryContentCreate({String tag = 'span'}) =>
+    createElementWithClasses(tag, [mdl.listItemPrimaryContent]);
 
-html.Element listItemSecondaryContentCreate({String tag = 'span'}) {
-  final classes = [mdl.listItemSecondaryContent];
-  final button = html.Element.tag(tag)..classes.addAll(classes);
-  return button;
-}
+/// The secondary content of an item.
+web.Element listItemSecondaryContentCreate({String tag = 'span'}) =>
+    createElementWithClasses(tag, [mdl.listItemSecondaryContent]);
 
-html.Element listItemSecondaryActionCreate({String tag = 'a'}) {
-  final classes = [mdl.listItemSecondaryAction];
-  final button = html.Element.tag(tag)..classes.addAll(classes);
-  return button;
-}
+/// The secondary action of an item.
+web.Element listItemSecondaryActionCreate({String tag = 'a'}) =>
+    createElementWithClasses(tag, [mdl.listItemSecondaryAction]);
 
-html.Element listItemTextBodyCreate({String tag = 'span'}) {
-  final classes = [mdl.listItemTextBody];
-  final button = html.Element.tag(tag)..classes.addAll(classes);
-  return button;
-}
+/// The text body of an item.
+web.Element listItemTextBodyCreate({String tag = 'span'}) =>
+    createElementWithClasses(tag, [mdl.listItemTextBody]);
 
-html.Element listItemAvatarCreate({
+/// The avatar of an item, showing [icon].
+web.Element listItemAvatarCreate({
   String tag = 'i',
   String? icon = iconPerson,
 }) {
@@ -73,24 +47,9 @@ html.Element listItemAvatarCreate({
   if (icon != null) {
     classes.add(materialIcons);
   }
-  final iElement = html.Element.tag(tag)..classes.addAll(classes);
+  final iElement = createElementWithClasses(tag, classes);
   if (icon != null) {
-    iElement.text = icon;
+    iElement.textContent = icon;
   }
   return iElement;
 }
-
-/*
-
-buttonUpgrade(html.Element button) {
-  mdl.componentHandler.upgradeElement(button);
-}
-
-buttonSetActive(html.Element button, bool active) {
-  if (active) {
-    button.classes.add(mdl.isActive);
-  } else {
-    button.classes.remove(mdl.isActive);
-  }
-}
-*/

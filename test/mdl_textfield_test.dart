@@ -1,16 +1,16 @@
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package
+// ignore_for_file: deprecated_member_use_from_same_package
 
 @TestOn('browser')
 library;
 
 import 'dart:async';
-import 'dart:html';
 
 import 'package:tekartik_mdl_js/mdl_component.dart';
 import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_textfield.dart';
 import 'package:test/test.dart';
+import 'package:web/web.dart' as web;
 
 void main() {
   group('textfield', () {
@@ -18,10 +18,10 @@ void main() {
       await (loadMdlJs());
     });
 
-    DivElement createTextfield() {
-      final textfield = DivElement();
+    web.HTMLDivElement createTextfield() {
+      final textfield = web.HTMLDivElement();
       textfield.className = 'mdl-textfield';
-      final input = InputElement();
+      final input = web.HTMLInputElement();
       input.className = 'mdl-textfield__input';
       input.setAttribute('type', 'text');
       textfield.append(input);
@@ -32,14 +32,14 @@ void main() {
       final textfield = createTextfield();
 
       expect(isComponentUpgraded(textfield), false);
-      expect(textfield.attributes['data-upgraded'], isNull);
+      expect(textfield.getAttribute('data-upgraded'), isNull);
 
       //print(new Map.from(textfield.attributes));
       textfieldUpgrade(textfield);
       //print(new Map.from(textfield.attributes));
       expect(isComponentUpgraded(textfield), true);
       expect(
-        textfield.attributes['data-upgraded'],
+        textfield.getAttribute('data-upgraded'),
         contains('MaterialTextfield'),
       );
     });
@@ -58,25 +58,25 @@ void main() {
     });
 
     test('autoUpgrade', () async {
-      var div = document.createElement('div');
-      Future upgraded = div.on['mdl-componentupgraded'].first;
+      var div = web.document.createElement('div');
+      Future upgraded = onComponentUpgraded(div).first;
       div.className = 'mdl-textfield';
-      expect(div.attributes['data-upgraded'], isNull);
+      expect(div.getAttribute('data-upgraded'), isNull);
       componentHandler!.upgradeElement(div);
-      expect(div.attributes['data-upgraded'], isNull);
+      expect(div.getAttribute('data-upgraded'), isNull);
       div.className = 'mdl-textfield mdl-js-textfield';
       componentHandler!.upgradeElement(div);
-      expect(div.attributes['data-upgraded'], contains('MaterialTextfield'));
+      expect(div.getAttribute('data-upgraded'), contains('MaterialTextfield'));
       // Wait for upgrade event
       await upgraded;
     });
 
     test('change', () async {
       final textfield = createTextfield();
-      final input = textfield.querySelector('input') as InputElement;
+      final input = textfield.querySelector('input') as web.HTMLInputElement;
       textfieldUpgrade(textfield);
       expect(
-        textfield.attributes['data-upgraded'],
+        textfield.getAttribute('data-upgraded'),
         contains('MaterialTextfield'),
       );
       expect(input.value, '');

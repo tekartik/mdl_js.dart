@@ -1,17 +1,22 @@
+/// Material icons.
 @Deprecated('Do no use')
 library;
 
-import 'dart:html' as html;
+import 'package:web/web.dart' as web;
 
+import 'src/dom_prv.dart';
+
+/// The material icons class.
 const String materialIcons = 'material-icons';
+
+/// The person icon.
 const String iconPerson = 'person';
 
-html.Element newIcon(String? icon, {String tag = 'i'}) {
-  final classes = [materialIcons];
-
-  final iElement = html.Element.tag(tag)..classes.addAll(classes);
+/// A new [tag] element showing [icon].
+web.Element newIcon(String? icon, {String tag = 'i'}) {
+  final iElement = createElementWithClasses(tag, [materialIcons]);
   if (icon != null) {
-    iElement.text = icon;
+    iElement.textContent = icon;
   }
   return iElement;
 }

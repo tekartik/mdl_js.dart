@@ -7,16 +7,19 @@ description: >-
   layoutTitleCreate, navigationCreate, layoutContentCreate, gridCreate /
   cellCreate, listCreate / listItemCreate / listItemAvatarCreate, newIcon,
   the TextField class with textfieldUpgrade / textfieldChange, and the
-  mdl-* class name constants of mdl_classes.dart. Legacy dart:html only.
+  mdl-* class name constants of mdl_classes.dart. package:web elements
+  (dart2js and dart2wasm).
 ---
 
 # MDL element builders (tekartik_mdl_js)
 
-`tekartik_mdl_js` ships thin `dart:html` builders that create Material Design
+`tekartik_mdl_js` ships thin `package:web` builders that create Material Design
 Lite 1.3 markup (the right `mdl-*` classes) and upgrade it through MDL's
 `componentHandler`. MDL is **retired upstream** and every library is annotated
-`@Deprecated('Do no use')`: this is for maintaining existing `dart:html` apps
-only. Loading the css/js bundle and the upgrade mechanics are covered by the
+`@Deprecated('Do no use')`: this is for maintaining existing pages only. The
+elements are `package:web` types (`web.Element`, `web.HTMLDivElement`...)
+since 0.6.0 (`dart:html` before), so it builds with dart2js and dart2wasm.
+Loading the css/js bundle and the upgrade mechanics are covered by the
 sibling skill [tekartik-mdl-js-setup](../tekartik-mdl-js-setup/SKILL.md);
 nothing below works before `await loadMdl()`.
 
@@ -30,15 +33,16 @@ nothing below works before `await loadMdl()`.
   Append first, upgrade after, otherwise MDL misses the parent.
 * Buttons (`mdl_button.dart`):
   `buttonCreate({bool ripple = true, bool? raised, bool? colored, String tag = 'button'})`
-  returns an `Element` with `mdl-button mdl-js-button` (+ `mdl-js-ripple-effect`,
+  returns a `web.Element` with `mdl-button mdl-js-button` (+ `mdl-js-ripple-effect`,
   `mdl-button--raised`, `mdl-button--colored`); `buttonUpgrade(button)` upgrades
   it; `buttonSetActive(button, bool)` toggles the `is-active` class. Set the
-  label yourself (`..text = 'Send'`), the builder does not.
-* Layout (`mdl_layout.dart`), all `dart:html` elements to nest by hand:
-  `layoutCreate({fixedDrawer, overlayDrawerButton, fixedHeader})` (note: the
-  `mdl-layout--overlay-drawer-button` class is always added),
+  label yourself (`..textContent = 'Send'`), the builder does not.
+* Layout (`mdl_layout.dart`), all `package:web` elements to nest by hand:
+  `layoutCreate({fixedDrawer, overlayDrawerButton, fixedHeader})` (each
+  modifier class only when its flag is true),
   `layoutHeaderCreate({transparent})`, `layoutHeaderRowCreate()`,
-  `layoutTitleCreate({title})` (the title is set as `innerHtml`),
+  `layoutTitleCreate({title})` (the title is its text, not parsed as HTML
+  since 0.6.0),
   `layoutSpacerCreate()`, `layoutDrawerCreate()`, `navigationCreate()`,
   `navigationLinkCreate()`, `layoutContentCreate()`; then `layoutUpgrade(layout)`.
   Show/hide the drawer with `layoutDrawerShow/Hide/Toggle(drawer)`, which just
@@ -62,8 +66,9 @@ nothing below works before `await loadMdl()`.
     upgrades it in the constructor**, so the js bundle must already be loaded.
     Use `element` (nullable) to append it, `value` to read/write, `label`,
     `pattern`, `focus()` and `onChange`.
-  * Always pass `inputId`: the input id is built as `'${inputId}_input'` and
-    becomes `null_input` otherwise, which collides between instances.
+  * Pass `inputId` to link the label to the input: the input id is then
+    `'${inputId}_input'` and the label `for` points to it; without it the
+    input has no id and the label no `for`.
   * `numeric: true` sets the `[0-9]*` pattern, `errorLabel` fills the
     `mdl-textfield__error` span, `floatingLabel` (default `true`) adds
     `mdl-textfield--floating-label`.
@@ -83,8 +88,8 @@ nothing below works before `await loadMdl()`.
   `list`, `listItem`, `listItemThreeLine`, `listItemPrimaryContent`,
   `listItemSecondaryContent`, `listItemSecondaryAction`, `listItemTextBody`,
   `listItemAvatar`, `isUpgraded`, `isVisible`, `isActive`, plus the
-  `prefixed()` / `jsPrefixed()` helpers. It is the only library of the package
-  that is not deprecated.
+  `prefixed()` / `jsPrefixed()` helpers. With `mdl_version.dart`, it is the
+  only library of the package that is not deprecated.
 * Components MDL provides but this package has no builder for (progress,
   spinner, slider, toolbar, ...) are plain markup upgraded with
   `componentHandler!.upgradeElement(element)`.
@@ -95,19 +100,18 @@ nothing below works before `await loadMdl()`.
 
 ```dart
 // ignore_for_file: deprecated_member_use
-import 'dart:html';
-
 import 'package:tekartik_mdl_js/mdl_button.dart';
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
+import 'package:web/web.dart' as web;
 
 Future<void> main() async {
   await loadMdl();
 
-  var button = buttonCreate(raised: true, colored: true)..text = 'Send';
-  document.body!.append(button);
+  var button = buttonCreate(raised: true, colored: true)..textContent = 'Send';
+  web.document.body!.append(button);
   buttonUpgrade(button);
 
-  button.onClick.listen((_) => buttonSetActive(button, true));
+  web.EventStreamProviders.clickEvent.forTarget(button).listen((_) => buttonSetActive(button, true));
 }
 ```
 
@@ -115,10 +119,9 @@ Future<void> main() async {
 
 ```dart
 // ignore_for_file: deprecated_member_use
-import 'dart:html';
-
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_layout.dart';
+import 'package:web/web.dart' as web;
 
 Future<void> main() async {
   await loadMdl();
@@ -136,7 +139,7 @@ Future<void> main() async {
         ..append(
           navigationLinkCreate()
             ..href = '#home'
-            ..text = 'Home',
+            ..textContent = 'Home',
         ),
     );
   var content = layoutContentCreate();
@@ -145,7 +148,7 @@ Future<void> main() async {
     ..append(header)
     ..append(drawer)
     ..append(content);
-  document.body!.append(layout);
+  web.document.body!.append(layout);
   layoutUpgrade(layout);
 
   // Manual toggle (just the is-visible class).
@@ -157,19 +160,18 @@ Future<void> main() async {
 
 ```dart
 // ignore_for_file: deprecated_member_use
-import 'dart:html';
-
 import 'package:tekartik_mdl_js/mdl_classes.dart' as mdl;
 import 'package:tekartik_mdl_js/mdl_grid.dart';
+import 'package:web/web.dart' as web;
 
 void buildGrid() {
   var grid = gridCreate();
   for (var i = 0; i < 3; i++) {
     // 4 of 12 columns on desktop, 8 on tablet, 4 on phone.
-    grid.append(cellCreate(4, tablet: 8, phone: 4)..text = 'cell $i');
+    grid.append(cellCreate(4, tablet: 8, phone: 4)..textContent = 'cell $i');
   }
   print(mdl.cellCol(4)); // mdl-cell--4-col
-  document.querySelector('#container')!.append(grid);
+  web.document.querySelector('#container')!.append(grid);
 }
 ```
 
@@ -177,18 +179,17 @@ void buildGrid() {
 
 ```dart
 // ignore_for_file: deprecated_member_use
-import 'dart:html';
-
 import 'package:tekartik_mdl_js/mdl_icons.dart';
 import 'package:tekartik_mdl_js/mdl_list.dart';
+import 'package:web/web.dart' as web;
 
-Element buildContactList() {
+web.Element buildContactList() {
   var list = listCreate();
 
   var primary = listItemPrimaryContentCreate()
     ..append(listItemAvatarCreate()) // person icon
-    ..append(SpanElement()..appendText('Bob Odenkirk'))
-    ..append(listItemTextBodyCreate()..appendText('Better call Saul'));
+    ..append(web.HTMLSpanElement()..textContent = 'Bob Odenkirk')
+    ..append(listItemTextBodyCreate()..textContent = 'Better call Saul');
   var secondary = listItemSecondaryContentCreate()
     ..append(listItemSecondaryActionCreate()..append(newIcon('star')));
 
@@ -205,10 +206,9 @@ Element buildContactList() {
 
 ```dart
 // ignore_for_file: deprecated_member_use
-import 'dart:html';
-
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_textfield.dart';
+import 'package:web/web.dart' as web;
 
 Future<void> main() async {
   // The constructor upgrades the element, so load the js bundle first.
@@ -221,7 +221,7 @@ Future<void> main() async {
     numeric: true,
     errorLabel: 'Input is not a number!',
   );
-  document.querySelector('#container')!.append(field.element!);
+  web.document.querySelector('#container')!.append(field.element!);
 
   field.onChange.listen((_) => print('new value ${field.value}'));
   field.value = '42'; // keeps the floating label in sync
@@ -234,21 +234,20 @@ Future<void> main() async {
 
 ```dart
 // ignore_for_file: deprecated_member_use
-import 'dart:html';
-
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_textfield.dart';
+import 'package:web/web.dart' as web;
 
 Future<void> main() async {
   await loadMdl();
 
-  var div = DivElement()..className = 'mdl-textfield mdl-js-textfield';
+  var div = web.HTMLDivElement()..className = 'mdl-textfield mdl-js-textfield';
   div.append(
-    InputElement()
+    web.HTMLInputElement()
       ..className = 'mdl-textfield__input'
       ..type = 'text',
   );
-  document.body!.append(div);
+  web.document.body!.append(div);
 
   textfieldUpgrade(div);
   textfieldChange(div, 'some value');

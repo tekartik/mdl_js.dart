@@ -1,133 +1,90 @@
-// needed
-@JS()
+/// The MDL `componentHandler` (upgrade the elements added after the page
+/// load), on dart:js_interop.
 @Deprecated('Do no use')
 library;
 
-import 'dart:html' as html;
+import 'dart:js_interop';
 
-import 'package:js/js.dart';
+import 'package:web/web.dart' as web;
 
 import 'src/import.dart' as mdl;
 
-//import 'dart:js' as js;
-
+/// MDL component types, the `jsClass` of [ComponentHandler.upgradeElement].
 final String materialTextfieldType = 'MaterialTextfield';
+
+/// Button.
 final String materialButtonType = 'MaterialButton';
+
+/// Ripple.
 final String materialRippleType = 'MaterialRipple';
+
+/// Progress.
 final String materialProgressType = 'MaterialProgress';
+
+/// Spinner.
 final String materialSpinnerType = 'MaterialSpinner';
+
+/// Slider.
 final String materialSliderType = 'MaterialSlider';
+
+/// Layout.
 final String materialLayoutType = 'MaterialLayout';
 
+/// The MDL `componentHandler` of the page, read on each call: a handler
+/// created before `loadMdlJs()` works once the script is loaded.
 class ComponentHandler {
-  final _jsComponentHandler = jsComponentHandler;
-
-  ComponentHandler() {
-    // ignore: unnecessary_null_comparison
-    assert(_jsComponentHandler != null);
+  /// Throws a [StateError] when material.js is not loaded.
+  JsComponentHandler get _jsComponentHandler {
+    var handler = jsComponentHandler;
+    if (handler == null) {
+      throw StateError('MDL componentHandler not loaded (loadMdlJs)');
+    }
+    return handler;
   }
-  /* NOT WORKING */
-  /*
-  Future _upgrade(html.HtmlElement element) {
-    upgradeElement(element);
-    return mdl.whenComponentUpgraded(element);
-  }
-  */
 
-  Future upgrade(html.HtmlElement element) {
-    //stream.listen((e) => print('upgraded'));
-    /*
-    Completer completer = new Completer.sync();
-    Stream stream = mdl.onComponentUpgraded(element);
-    stream.listen((e) {
-      if (!completer.isCompleted) {
-        completer.complete();
-      }
-    });
-    */
+  /// The handler.
+  ComponentHandler();
+
+  /// Upgrades [element] (every MDL class it has), throws a [StateError]
+  /// when nothing was upgraded.
+  Future upgrade(web.HTMLElement element) {
     upgradeElement(element);
     if (!mdl.isComponentUpgraded(element)) {
       throw StateError(
-        'element not upgrade $element ${Map<String, String>.from(element.attributes)}',
+        'element not upgrade $element ${element.getAttribute('class')}',
       );
     }
-    //return completer.future;
     return Future.value();
   }
 
-  /// Upgrade a specific element
-  /// return the number of upgrades performed
-  void upgradeElement(html.Element element, {String? jsClass}) {
+  /// Upgrades [element]: every MDL class it has, or only [jsClass]
+  /// ([materialButtonType]...).
+  void upgradeElement(web.Element element, {String? jsClass}) {
     if (jsClass == null) {
       _jsComponentHandler.upgradeElement(element);
     } else {
       _jsComponentHandler.upgradeElement(element, jsClass);
     }
   }
-
-  // Handle when no jsClass is specified
-  /*
-    if (jsClass == null) {
-      List<String> jsClasses = [];
-      html.CssClassSet classes = element.classes;
-      if (classes.contains(mdl.button)) {
-        jsClasses.add(materialButtonType);
-      }
-      if (classes.contains(mdl.textfield)) {
-        jsClasses.add(materialTextfieldType);
-      }
-      if (classes.contains(mdl.progress)) {
-        jsClasses.add(materialProgressType);
-      }
-      if (classes.contains(mdl.spinner)) {
-        jsClasses.add(materialSpinnerType);
-      }
-      if (classes.contains(mdl.slider)) {
-        jsClasses.add(materialSliderType);
-      }
-      if (classes.contains(mdl.layout)) {
-        jsClasses.add(materialLayoutType);
-      }
-      if (classes.contains(mdl.jsRippleEffect)) {
-        jsClasses.add(materialRippleType);
-      }
-      if (jsClasses.isEmpty) {
-        throw 'element type cannot be found';
-      } else {
-        int count = 0;
-        for (jsClass in jsClasses) {
-          count += upgradeElement(element, jsClass: jsClass);
-        }
-        return count;
-      }
-    } else {
-      String upgraded = element.dataset['upgraded'];
-      if (upgraded != null) {
-        if (upgraded.split(',').contains(jsClass)) {
-          return 0;
-        }
-      }
-      _jsComponentHandler.callMethod('upgradeElement', [element, jsClass]);
-      return 1;
-    }
-  }
-  */
 }
 
 ComponentHandler? _componentHandler;
 
+/// The component handler.
 ComponentHandler? get componentHandler {
   _componentHandler ??= ComponentHandler();
   return _componentHandler;
 }
 
-@JS()
-@anonymous
-class JsComponentHandler {
-  external dynamic upgradeDom();
+/// The JS `componentHandler` of material.js.
+extension type JsComponentHandler._(JSObject _) implements JSObject {
+  /// Upgrades every MDL element of the page.
+  external JSAny? upgradeDom();
 
-  external dynamic upgradeElement(html.Element element, [String? jsClass]);
+  /// Upgrades [element], or only its [jsClass] component.
+  external JSAny? upgradeElement(web.Element element, [String jsClass]);
 }
 
+/// The JS `componentHandler`, null until material.js is loaded.
 @JS('componentHandler')
-external JsComponentHandler get jsComponentHandler;
+external JsComponentHandler? get jsComponentHandler;

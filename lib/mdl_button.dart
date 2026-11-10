@@ -1,11 +1,15 @@
+/// MDL button.
 @Deprecated('Do no use')
 library;
 
-import 'dart:html' as html;
+import 'package:web/web.dart' as web;
+
 import 'mdl_classes.dart' as mdl;
 import 'mdl_js.dart' as mdl;
+import 'src/dom_prv.dart';
 
-html.Element buttonCreate({
+/// A new [tag] MDL button, to upgrade ([buttonUpgrade]) once in the page.
+web.Element buttonCreate({
   bool ripple = true,
   bool? raised,
   bool? colored,
@@ -22,18 +26,19 @@ html.Element buttonCreate({
     classes.add(mdl.buttonColored);
   }
 
-  final button = html.Element.tag(tag)..classes.addAll(classes);
-  return button;
+  return createElementWithClasses(tag, classes);
 }
 
-void buttonUpgrade(html.Element button) {
+/// Upgrades [button] (`componentHandler.upgradeElement`).
+void buttonUpgrade(web.Element button) {
   mdl.componentHandler!.upgradeElement(button);
 }
 
-void buttonSetActive(html.Element button, bool active) {
+/// Adds or removes the active class.
+void buttonSetActive(web.Element button, bool active) {
   if (active) {
-    button.classes.add(mdl.isActive);
+    button.classList.add(mdl.isActive);
   } else {
-    button.classes.remove(mdl.isActive);
+    button.classList.remove(mdl.isActive);
   }
 }

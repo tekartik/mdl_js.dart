@@ -1,11 +1,15 @@
+/// MDL layout: layout, drawer, header, title, navigation, content.
 @Deprecated('Do no use')
 library;
 
-import 'dart:html' as html;
+import 'package:web/web.dart' as web;
+
 import 'mdl_classes.dart' as mdl;
 import 'mdl_js.dart' as mdl;
+import 'src/dom_prv.dart';
 
-html.DivElement layoutCreate({
+/// A new layout `div` (`mdl-layout mdl-js-layout` and the options).
+web.HTMLDivElement layoutCreate({
   bool? fixedDrawer,
   bool? overlayDrawerButton,
   bool? fixedHeader,
@@ -24,12 +28,13 @@ html.DivElement layoutCreate({
   if (overlayDrawerButton == true) {
     classes.add(mdl.layoutOverlayDrawerButton);
   }
-  final div = html.DivElement()..classes.addAll(classes);
-
+  final div = web.HTMLDivElement();
+  addClasses(div, classes);
   return div;
 }
 
-void layoutUpgrade(html.DivElement layout) {
+/// Upgrades [layout].
+void layoutUpgrade(web.HTMLDivElement layout) {
   mdl.componentHandler!.upgradeElement(layout);
 }
 
@@ -38,76 +43,71 @@ void layoutUpgrade(html.DivElement layout) {
         <span class='mdl-layout-title'>Title</span>
         <nav class='mdl-navigation'>
             <a class='mdl-navigation__link' href=''>Link</a>
-            <a class='mdl-navigation__link' href=''>Link</a>
-            <a class='mdl-navigation__link' href=''>Link</a>
-            <a class='mdl-navigation__link' href=''>Link</a>
         </nav>
     </div>
  */
 
-html.DivElement layoutDrawerCreate() {
-  final div = html.DivElement()..classes.add(mdl.layoutDrawer);
-  return div;
+/// A new drawer.
+web.HTMLDivElement layoutDrawerCreate() {
+  return web.HTMLDivElement()..classList.add(mdl.layoutDrawer);
 }
 
-void layoutDrawerShow(html.DivElement layoutDrawer) {
-  layoutDrawer.classes.add(mdl.isVisible);
+/// Shows the drawer.
+void layoutDrawerShow(web.HTMLDivElement layoutDrawer) {
+  layoutDrawer.classList.add(mdl.isVisible);
 }
 
-void layoutDrawerHide(html.DivElement layoutDrawer) {
-  layoutDrawer.classes.remove(mdl.isVisible);
+/// Hides the drawer.
+void layoutDrawerHide(web.HTMLDivElement layoutDrawer) {
+  layoutDrawer.classList.remove(mdl.isVisible);
 }
 
-void layoutDrawerToggle(html.DivElement layoutDrawer) {
-  layoutDrawer.classes.toggle(mdl.isVisible);
+/// Shows or hides the drawer.
+void layoutDrawerToggle(web.HTMLDivElement layoutDrawer) {
+  layoutDrawer.classList.toggle(mdl.isVisible);
 }
 
-html.Element layoutHeaderCreate({bool? transparent}) {
+/// A new header.
+web.Element layoutHeaderCreate({bool? transparent}) {
   final classes = [mdl.layoutHeader];
   if (transparent == true) {
     classes.add(mdl.layoutHeaderTransparent);
   }
-  final header = html.Element.tag('header')..classes.addAll(classes);
-  return header;
+  return createElementWithClasses('header', classes);
 }
 
-html.DivElement layoutHeaderRowCreate() {
-  final classes = [mdl.layoutHeaderRow];
-  final row = html.DivElement()..classes.addAll(classes);
-  return row;
+/// A new header row.
+web.HTMLDivElement layoutHeaderRowCreate() {
+  return web.HTMLDivElement()..classList.add(mdl.layoutHeaderRow);
 }
 
-//
-html.SpanElement layoutTitleCreate({String? title}) {
-  final span = html.SpanElement()..classes.add(mdl.layoutTitle);
+/// A new title, [title] as its text (not parsed as HTML).
+web.HTMLSpanElement layoutTitleCreate({String? title}) {
+  final span = web.HTMLSpanElement()..classList.add(mdl.layoutTitle);
   if (title != null) {
-    span.innerHtml = title;
+    span.textContent = title;
   }
   return span;
 }
 
-//
-html.DivElement layoutSpacerCreate() {
-  final div = html.DivElement()..classes.add(mdl.layoutSpacer);
-  return div;
+/// A new spacer.
+web.HTMLDivElement layoutSpacerCreate() {
+  return web.HTMLDivElement()..classList.add(mdl.layoutSpacer);
 }
 
 /*
 <nav class='mdl-navigation'>
 <a class='mdl-navigation__link' href=''>Link</a>
-<a class='mdl-navigation__link' href=''>Link</a>
-<a class='mdl-navigation__link' href=''>Link</a>
-<a class='mdl-navigation__link' href=''>Link</a>
 </nav>
 */
-html.Element navigationCreate() {
-  final nav = html.Element.tag('nav')..classes.add(mdl.navigation);
-  return nav;
+/// A new navigation.
+web.Element navigationCreate() {
+  return createElementWithClasses('nav', [mdl.navigation]);
 }
 
-html.AnchorElement navigationLinkCreate() {
-  final nav = html.AnchorElement()..classes.add(mdl.navigationLink);
-  return nav;
+/// A new navigation link.
+web.HTMLAnchorElement navigationLinkCreate() {
+  return web.HTMLAnchorElement()..classList.add(mdl.navigationLink);
 }
 
 /*
@@ -115,8 +115,7 @@ html.AnchorElement navigationLinkCreate() {
 <div class='page-content'><!-- Your content goes here --></div>
 </main>
 */
-html.Element layoutContentCreate() {
-  final classes = [mdl.layoutContent];
-  final header = html.Element.tag('main')..classes.addAll(classes);
-  return header;
+/// A new content (`main`).
+web.Element layoutContentCreate() {
+  return createElementWithClasses('main', [mdl.layoutContent]);
 }

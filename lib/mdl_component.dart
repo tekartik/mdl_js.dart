@@ -1,17 +1,25 @@
+/// MDL component upgrade events.
 @Deprecated('Do no use')
 library;
 
 import 'dart:async';
-import 'dart:html' as html;
 
-Stream onComponentUpgraded(html.Element element) =>
-    element.on['mdl-componentupgraded'];
+import 'package:web/web.dart' as web;
 
-bool isComponentUpgraded(html.Element element) =>
-    element.dataset['upgraded'] != null;
+const _upgradedEvent = web.EventStreamProvider<web.Event>(
+  'mdl-componentupgraded',
+);
 
-/// eventCount: number of event to wait for
-Future whenComponentUpgraded(html.Element element) {
+/// The `mdl-componentupgraded` events of [element].
+Stream<web.Event> onComponentUpgraded(web.Element element) =>
+    _upgradedEvent.forTarget(element);
+
+/// Whether MDL upgraded [element] (it has a `data-upgraded` attribute).
+bool isComponentUpgraded(web.Element element) =>
+    element.getAttribute('data-upgraded') != null;
+
+/// Completes once [element] is upgraded.
+Future whenComponentUpgraded(web.Element element) {
   if (isComponentUpgraded(element)) {
     return Future.value();
   }

@@ -1,12 +1,12 @@
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package
+// ignore_for_file: deprecated_member_use_from_same_package
 
 import 'dart:async';
-import 'dart:html';
 
 import 'package:tekartik_mdl_js/mdl_icons.dart';
 import 'package:tekartik_mdl_js/mdl_js.dart';
 import 'package:tekartik_mdl_js/mdl_js_loader.dart';
 import 'package:tekartik_mdl_js/mdl_list.dart';
+import 'package:web/web.dart' as web;
 
 void createList() {
   final list = listCreate();
@@ -14,7 +14,7 @@ void createList() {
   var primaryContent = listItemPrimaryContentCreate();
   primaryContent
     ..append(listItemAvatarCreate())
-    ..appendText('Simple person');
+    ..append(web.Text('Simple person'));
   list.append(item..append(primaryContent));
 
   /*
@@ -36,8 +36,8 @@ void createList() {
   primaryContent = listItemPrimaryContentCreate();
   primaryContent
     ..append(listItemAvatarCreate())
-    ..append(SpanElement()..appendText('Simple person'))
-    ..append(listItemTextBodyCreate()..appendText('Simple line'));
+    ..append(web.HTMLSpanElement()..textContent = 'Simple person')
+    ..append(listItemTextBodyCreate()..textContent = 'Simple line');
   final secondaryContent = listItemSecondaryContentCreate()
     ..append(listItemSecondaryActionCreate()..append(newIcon(iconPerson)));
   list.append(
@@ -46,7 +46,7 @@ void createList() {
       ..append(secondaryContent),
   );
 
-  querySelector('#container')!.append(list);
+  web.document.querySelector('#container')!.append(list);
 }
 
 Future main() async {
@@ -54,7 +54,7 @@ Future main() async {
   // ignore: avoid_print
   print('list-sample');
 
-  jsComponentHandler.upgradeDom();
+  jsComponentHandler!.upgradeDom();
 
   createList();
   await Future<void>.delayed(const Duration(milliseconds: 100));
